@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Timers;
-
 using WiimoteLib;
 
 namespace Wii_Balanceboard_client
@@ -17,7 +16,7 @@ namespace Wii_Balanceboard_client
         private static float adjustBottomLeft;
         private static float adjustBottomRight;
         private static UDPSocket.UDPSocket c = new UDPSocket.UDPSocket();
-        private static bool display_values = false;
+        private static bool display_values;
 
         public static void Main(string[] args)
         {
@@ -29,7 +28,7 @@ namespace Wii_Balanceboard_client
             var connected = Connect_Device();
             while (!connected)
             {
-                if (!AskYesNoQuestion("Do you want to try again?")) return;
+                if (!Ask_Yes_No_Question("Do you want to try again?")) return;
 
                 connected = Connect_Device();
             }
@@ -38,7 +37,7 @@ namespace Wii_Balanceboard_client
             Console.ReadKey(true);
 
             //
-            if (AskYesNoQuestion("Do you want to calibrate balance?")) zeroout_Click();
+            if (Ask_Yes_No_Question("Do you want to calibrate balance?")) Zero_Out();
             Console.WriteLine("Press d to toggle display. Press Esc to exit program");
             bool cont = true;
             while (cont)
@@ -79,20 +78,25 @@ namespace Wii_Balanceboard_client
             var adjustedTR = rwTopRight - adjustTopRight;
             var adjustedBL = rwBottomLeft - adjustBottomLeft;
             var adjustedBR = rwBottomRight - adjustBottomRight;
-            if (display_values) Console.Write(String.Format(
-                "\r Raw weights: TL {0,6:##0.0000} TR {1,6:##0.0000} BL {2,6:##0.0000} BR{3,6:##0.0000}. Adjusted weights TL {4,6:##0.0000} TR {5,6:##0.0000} BL {6,6:##0.0000} BR{7,6:##0.0000}.                                 ",
-                rwTopLeft, rwTopRight, rwBottomLeft, rwBottomRight,
-                adjustedTL, adjustedTR, adjustedBL, adjustedBR)
-            );
-            string msg = String.Format(
-                "rTL:{0},rTR:{1},rBL:{2},rBR:{3};aTL:{4},aTR:{5},aBL:{6},aBR:{7}",
-                rwTopLeft, rwTopRight, rwBottomLeft, rwBottomRight,
-                adjustedTL, adjustedTR, adjustedBL, adjustedBR);
-            c.Send(msg); // send each reading separately or send all together? Test
-
+            if (display_values) Console.Write("\r Raw weights: TL {0,6:##0.0000} TR {1,6:##0.0000} BL {2,6:##0.0000} BR{3,6:##0.0000}. Adjusted weights TL {4,6:##0.0000} TR {5,6:##0.0000} BL {6,6:##0.0000} BR{7,6:##0.0000}.                                 ", rwTopLeft, rwTopRight, rwBottomLeft, rwBottomRight, adjustedTL, adjustedTR, adjustedBL, adjustedBR);
+            
+             // send each reading separately or send all together? Test
+            Send_Data("rTL", rwTopLeft);
+            Send_Data("rTR", rwTopRight);
+            Send_Data("rBL", rwBottomLeft);
+            Send_Data("rBR", rwBottomRight);
+            Send_Data("aTL", adjustedTL);
+            Send_Data("aTR", adjustedTR);
+            Send_Data("aBL", adjustedBL);
+            Send_Data("aBR", adjustedBR);
         }
 
-        private static void zeroout_Click()
+        private static void Send_Data(string name, float value)
+        {
+            c.Send($"{name}:{value}");
+        }
+
+        private static void Zero_Out()
         {
             adjustTopLeft = wiiDevice.WiimoteState.BalanceBoardState.SensorValuesKg.TopLeft;
             adjustTopRight = wiiDevice.WiimoteState.BalanceBoardState.SensorValuesKg.TopRight;
@@ -127,9 +131,9 @@ namespace Wii_Balanceboard_client
                         var devicePathId = new Regex("e_pid&.*?&(.*?)&").Match(wiiDevice.HIDDevicePath)
                             .Groups[1]
                             .Value.ToUpper();
-                        if (ChooseDevice(devicePathId, i + 1, deviceCollection.Count)) return true;
+                        if (!Choose_Device(devicePathId, i + 1, deviceCollection.Count)) continue;
 
-                        continue;
+                 
                     }
 
                     // Connect and send a request to verify it worked.
@@ -138,12 +142,9 @@ namespace Wii_Balanceboard_client
                     wiiDevice.SetReportType(InputReport.IRAccel,
                         false); // FALSE = DEVICE ONLY SENDS UPDATES WHEN VALUES CHANGE!
                     wiiDevice.SetLEDs(true, false, false, false);
+
                     // Enable processing of updates.
-
                     infoUpdateTimer.Enabled = true;
-
-                    // Prevent connect being pressed more than once.
-
                     break;
                 }
             }
@@ -156,12 +157,12 @@ namespace Wii_Balanceboard_client
             return true;
         }
 
-        private static bool ChooseDevice(string devicePathId, int index, int len)
+        private static bool Choose_Device(string devicePathId, int index, int len)
         {
-            return AskYesNoQuestion("Connect to HID " + devicePathId + " device " + index + " of " + len + " ?");
+            return Ask_Yes_No_Question("Connect to HID " + devicePathId + " device " + index + " of " + len + " ?");
         }
 
-        private static bool AskYesNoQuestion(string str)
+        private static bool Ask_Yes_No_Question(string str)
         {
             Console.WriteLine(str + " [Y]/[n]");
             return Console.ReadKey(true).Key != ConsoleKey.N;
