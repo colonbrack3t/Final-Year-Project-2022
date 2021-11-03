@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Timers;
-using WiiBalanceWalker;
+
 using WiimoteLib;
 
 namespace Wii_Balanceboard_client
@@ -16,7 +16,7 @@ namespace Wii_Balanceboard_client
         private static float adjustTopRight;
         private static float adjustBottomLeft;
         private static float adjustBottomRight;
-        private static UDPSocket c = new UDPSocket();
+        private static UDPSocket.UDPSocket c = new UDPSocket.UDPSocket();
         private static bool display_values = false;
 
         public static void Main(string[] args)

@@ -5,6 +5,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UDPSocket", "UDPSocket", "{FCF9D884-3F28-4570-855D-35CFAA13A0CE}"
 ProjectSection(SolutionItems) = preProject
 	UDPSocket.cs = UDPSocket.cs
+	Unity Scripts\UnityWiiServer.cs = Unity Scripts\UnityWiiServer.cs
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unity Scripts", "Unity Scripts", "{16D96B1D-A42F-4773-98DA-4C8CA0833262}"
+ProjectSection(SolutionItems) = preProject
+	UDPSocket.cs = UDPSocket.cs
+	Unity Scripts\UnityWiiServer.cs = Unity Scripts\UnityWiiServer.cs
+	Unity Scripts\UDPSocketUnity.cs = Unity Scripts\UDPSocketUnity.cs
 EndProjectSection
 EndProject
 Global

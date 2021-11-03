@@ -1,9 +1,10 @@
-﻿﻿﻿﻿namespace WiiBalanceWalker
+﻿namespace UDPSocket
 {
     using System;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
+    
 
     public class UDPSocket
     {
@@ -18,7 +19,7 @@
             public byte[] buffer = new byte[bufSize];
         }
 
-        public void Server(string address, int port)
+        public virtual void Server(string address, int port)
         {
             _socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
             _socket.Bind(new IPEndPoint(IPAddress.Parse(address), port));
@@ -42,7 +43,7 @@
             }, state);
         }
 
-        private void Receive()
+        public virtual void Receive()
         {            
             _socket.BeginReceiveFrom(state.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv = (ar) =>
             {
@@ -60,4 +61,6 @@
             }, state);
         }
     }
+
 }
+    
