@@ -54,7 +54,7 @@ public class UDPSocketUnity : UDPSocket.UDPSocket
                         break;
                     case "aBR":
                         unityScript.adjustedBR = float.Parse(msg_parts[1]);
-                        break;
+                        break; 
                 }
 
             }

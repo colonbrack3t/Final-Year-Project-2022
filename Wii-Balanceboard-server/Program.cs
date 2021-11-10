@@ -16,13 +16,13 @@ namespace Wii_Balanceboard_client
         private static float adjustBottomLeft;
         private static float adjustBottomRight;
         private static UDPSocket.UDPSocket c = new UDPSocket.UDPSocket();
-        private static bool display_values;
+        private static bool display_values = false, test_latency = false;
 
         public static void Main(string[] args)
         {
             //Set up public variables
             infoUpdateTimer.Elapsed += InfoUpdateTimerOnElapsed;
-            c.Client("127.0.0.1", 27002);
+            c.Client("127.0.0.1", 27333);
 
             //connect device
             var connected = Connect_Device();
@@ -38,7 +38,10 @@ namespace Wii_Balanceboard_client
 
             //
             if (Ask_Yes_No_Question("Do you want to calibrate balance?")) Zero_Out();
-            Console.WriteLine("Press d to toggle display. Press Esc to exit program");
+
+            string printmsg =
+                "Press d to toggle display. Press Z to zero out. Press T to test Latency. Press Esc to exit program";
+            Console.WriteLine(printmsg);
             bool cont = true;
             while (cont)
             {
@@ -55,14 +58,20 @@ namespace Wii_Balanceboard_client
                         {
                             display_values = false;
                             
-                            Console.WriteLine("\nPress d to toggle display. Press Esc to exit program");
+                            Console.WriteLine("\n"+printmsg);
                         }
 
                         break;
                     case ConsoleKey.Escape:
                         cont = false;
                         break;
-                    
+                    case ConsoleKey.Z:
+                        Zero_Out();
+                        break;
+                    case ConsoleKey.T:
+                        test_latency = !test_latency;
+                        break;
+
                 }
             }
             wiiDevice.Disconnect();
@@ -89,9 +98,19 @@ namespace Wii_Balanceboard_client
             Send_Data("aTR", adjustedTR);
             Send_Data("aBL", adjustedBL);
             Send_Data("aBR", adjustedBR);
+            if (test_latency)
+            {
+                var dt = DateTime.Now.TimeOfDay.TotalMilliseconds.ToString();
+               
+                Send_Data("timestamp", dt);
+            };
         }
 
         private static void Send_Data(string name, float value)
+        {
+            c.Send($"{name}:{value}");
+        }
+        private static void Send_Data(string name, string value)
         {
             c.Send($"{name}:{value}");
         }

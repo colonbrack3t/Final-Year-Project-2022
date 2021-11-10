@@ -14,6 +14,7 @@ public class BalanceBoardSensor : MonoBehaviour
     public float rwTopRight = 0f;
     public float rwBottomLeft = 0f;
     public float rwBottomRight = 0f;
+    public float latency = 0f;
    
     UDPSocketUnity server = new UDPSocketUnity();
 
