@@ -1,0 +1,63 @@
+{
+    "name": "CalibrationInputs",
+    "maps": [
+        {
+            "name": "CalibrateHeight",
+            "id": "20bfd235-6a1a-4d8c-b062-40ae88d4bb39",
+            "actions": [
+                {
+                    "name": "New Callibration",
+                    "type": "Button",
+                    "id": "a42c3abe-bd5b-4bc8-b7d6-2b4fe0385cc7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Set Callibration",
+                    "type": "Button",
+                    "id": "363f5d9f-a8a0-4a41-aa20-d91bad7b834c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f498f6c2-6284-42bd-98c9-9f85cdb54356",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New Callibration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f18c93a-3fb7-4dd4-9aae-9566e918f58b",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New Callibration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69a9a90c-dc63-4b23-a8c1-1bb78cee57dd",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Set Callibration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
