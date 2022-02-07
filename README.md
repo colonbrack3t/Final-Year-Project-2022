@@ -1,4 +1,4 @@
- Wii Board bluetooth to C# socket connector for Windows
+# Wii Board bluetooth to C# socket connector for Windows
 
 Wii Board bluetooth to C# socket connector is a C# application that enables users to connect to their Wii board, get sensor readings, record sensor latency, as well as provide a C# UDP client socket interface for other softwares to connect to. This tool will send live updates over the socket, as well as allowing a toggleable timestamp message to measure latency.
 
