@@ -4,4 +4,5 @@ All components of Unity needed to both connect a device to a wiiboard, and to cr
 ## Installation
 
 TODO: how to create a VR unity proj
+
 TODO: how to import these assets to proj
