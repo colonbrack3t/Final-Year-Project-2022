@@ -18,10 +18,10 @@ The device which the project is running on will display the correct answers to e
 ### Using and understanding the souce code
 The project can be seen as 3 key components: Wii Board, Sway mechanic and Stroop test.
 
-## Wii Board
+#### Wii Board
 The Wii board gameobject contains all relevant scripts needed. These scripts are "Balance Board Sensor" and "Estimate Height".
 
-Balance Board Sensor class
+##### Balance Board Sensor class
 
 This class operates the connection to the balance board [C# client Socket tool](https://github.com/colonbrack3t/wiiboard-unity-scripts/tree/main/Wii-Balanceboard-server). We connect to the client using the UDPSocketUnity class, which inherits from the UDPSocket class (the same one that is used in the client tool). The child class overrides the Recieve function to synchronously update the Balance Board class sensor values. 
 
