@@ -25,7 +25,7 @@ The Wii board gameobject contains all relevant scripts needed. These scripts are
 
 This class operates the connection to the balance board [C# client Socket tool](https://github.com/colonbrack3t/wiiboard-unity-scripts/tree/main/Wii-Balanceboard-server). We connect to the client using the UDPSocketUnity class, which inherits from the UDPSocket class (the same one that is used in the client tool). The child class overrides the Recieve function to synchronously update the Balance Board class sensor values. 
 
-*N.B ensure the port matches the client port*
+**N.B ensure the port matches the client port**
 
 This class also handles recording various elements of the setup. Namely:
 1) the Wiiboard sensor readings
@@ -35,7 +35,7 @@ This class also handles recording various elements of the setup. Namely:
 
 Each of these recordings produce a "data.csv" file after being toggled off. This data.csv is a comma seperated database, where each line represents an element that was recorded. 
 
-*N.B while it is possible to toggle multiple modes at the same time, however when toggling off, each recording while overwrite the data.csv file. Therefore one should rename/move the data.csv each time after toggling off each record mode.*
+**N.B while it is possible to toggle multiple modes at the same time, however when toggling off, each recording while overwrite the data.csv file. Therefore one should rename/move the data.csv each time after toggling off each record mode.**
 
 
 
