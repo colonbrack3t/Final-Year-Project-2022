@@ -37,6 +37,10 @@ Each of these recordings produce a "data.csv" file after being toggled off. This
 
 **N.B while it is possible to toggle multiple modes at the same time, however when toggling off, each recording while overwrite the data.csv file. Therefore one should rename/move the data.csv each time after toggling off each record mode.**
 
+##### Estimate Height
+
+#### Sway mechanic
+#### Stroop test (and app manager)
 
 
 ## Troubleshooting
