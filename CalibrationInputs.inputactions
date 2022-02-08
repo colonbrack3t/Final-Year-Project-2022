@@ -6,7 +6,7 @@
             "id": "20bfd235-6a1a-4d8c-b062-40ae88d4bb39",
             "actions": [
                 {
-                    "name": "New Callibration",
+                    "name": "Set Callibration",
                     "type": "Button",
                     "id": "a42c3abe-bd5b-4bc8-b7d6-2b4fe0385cc7",
                     "expectedControlType": "Button",
@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Set Callibration",
+                    "name": "New Callibration",
                     "type": "Button",
                     "id": "363f5d9f-a8a0-4a41-aa20-d91bad7b834c",
                     "expectedControlType": "Button",
@@ -30,7 +30,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New Callibration",
+                    "action": "Set Callibration",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -41,7 +41,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New Callibration",
+                    "action": "Set Callibration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a6570c9-f84f-4d3b-b06f-3a7c2df5fc4b",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Set Callibration",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -52,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Set Callibration",
+                    "action": "New Callibration",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

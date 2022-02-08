@@ -8,81 +8,108 @@ using System.IO;
 public class BalanceBoardSensor : MonoBehaviour
 {
 
-    public double adjustedTL = 0f;
-    public double adjustedTR = 0f;
-    public double adjustedBL = 0f;
-    public double adjustedBR = 0f;
-    public double rwTopLeft = 0f;
-    public double rwTopRight = 0f;
-    public double rwBottomLeft = 0f;
-    public double rwBottomRight = 0f;
-    public double latency = 0f;
-    public double avglatency = 0f;
-    public double minlatency = float.MaxValue;
-    public double maxlatency = 0f;
-    public int latency_count = 0;
-    public Button Save_latency;
-    public Button Record_headset_board;
-    public Button Save_headset_board;
-    public Button mouse_record_button;
-    public Button save_mouse_board_data;
-    public Button record_board_button;
-    public double avg_ms_per_reading = 0;
-    public double prev_ms = 0;
-    public double reading_diff = 0f;
-    public Text UItext;
-    public Transform camera;
-    public double camera_height;
-    public bool record_headset = false, record_board_collision = false;
+    // sensor weights
+    [SerializeField] public double rwTopLeft = 0f;
+    [SerializeField] public double rwTopRight = 0f;
+    [SerializeField] public double rwBottomLeft = 0f;
+    [SerializeField] public double rwBottomRight = 0f;
 
-    public List<double[]>[] board_recording = new List<double[]>[]{new List<double[]>(),new List<double[]>(),new List<double[]>(),new List<double[]>()};
-    double record_start_time = 0;
-    public List<double[]> Headset_record = new List<double[]>();
-    public List<double> mouse_click_record = new List<double>();
-    
-    UDPSocketUnity server = new UDPSocketUnity();
+    //latency- only updated if client is in latency mode
+    [SerializeField] public double latency = 0f;
+    [SerializeField] public double avglatency = 0f;
+    [SerializeField] public double minlatency = float.MaxValue;
+    [SerializeField] public double maxlatency = 0f;
+    [SerializeField] public int latency_count = 0;
     private List<double> latencies = new List<double>();
+
+    //records average delay between samples
+    [SerializeField] public double avg_ms_per_reading = 0;
+    [SerializeField] public double prev_ms = 0;
+    
+    //ref to buttons to add onlclick handlers
+    [SerializeField] private Button Save_latency;
+    [SerializeField] private Button Record_headset_board;
+    [SerializeField] private Button Save_headset_board;
+    [SerializeField] private Button mouse_record_button;
+    [SerializeField] private Button save_mouse_board_data;
+    [SerializeField] private Button record_board_button;
+
+    //weight average computation attributes
+    private bool calculateWeight = false;
+    public double weight = 0;
+    private int num_weight_readings = 0;
+    //Text visual component
+    [SerializeField] private Text UItext;
+    //Headset "Camera" transform - matches where headset is in real world
+    [SerializeField] private Transform headsetcamera;
+
+    //record headset/record board sensors flags
+    [SerializeField] public bool record_headset = false, record_board_collision = false;
+
+    // Lists to store board/headset/mouse clicks
+
+    //saves
+    private List<double[]>[] board_recording = new List<double[]>[]{new List<double[]>(),new List<double[]>(),new List<double[]>(),new List<double[]>()};
+    private List<double[]> Headset_record = new List<double[]>();
+    private List<double> mouse_click_record = new List<double>();
+
+    private double record_start_time = 0;
+    UDPSocketUnity server = new UDPSocketUnity();
     // Start is called before the first frame update
     void Start()
     {
+      //add onclick handlers for various UI
         Save_latency.onClick.AddListener(StoreLatencyData);
         Save_headset_board.onClick.AddListener(StoreVRvsBoardReadings);
         Record_headset_board.onClick.AddListener(ToggleRecordHeadsetBoard);
 
-        server.Server("127.0.0.1", 27334, this);
         mouse_record_button.onClick.AddListener(MouseClickRecord);
 
         record_board_button.onClick.AddListener(ToggleRecordBoard);
         save_mouse_board_data.onClick.AddListener(SaveMouseBoardData);
+
+        //Initiate UDP Server
+        server.Server("127.0.0.1", 27334, this);
     }
+    //record when mouse was clicked
     void MouseClickRecord(){
         mouse_click_record.Add(DateTime.Now.TimeOfDay.TotalMilliseconds - record_start_time);
     }
-    void Update()
+    void FixedUpdate()
     {
-        UItext.text = camera.position.y.ToString();
-        
-        if(record_headset)
+      //if record_headset flag is true, record vertical height of headset
+      if(record_headset)
              RecordHeadsetVertical();
+        if (calculateWeight){
+            num_weight_readings++;
+            double weight_reading = rwTopRight + rwTopLeft + rwBottomRight + rwBottomLeft;
+            weight = (weight + weight_reading)/num_weight_readings;
+        }
     }
+    //public wrapper for Unity Debug
     public void display(string s)
     {
         Debug.Log(s);
     }
+    //public wrapper to add method of latency list
     public void AddLatency(double latency)
     {
         latencies.Add(latency);
     }
+
+    //toggle recording headset height and board sensors
     public void ToggleRecordHeadsetBoard()
     {
         record_board_collision = !record_board_collision;
         record_headset = !record_headset;
         record_start_time = DateTime.Now.TimeOfDay.TotalMilliseconds;
     }
+    //toggle recording board sensors
     public void ToggleRecordBoard(){
         record_board_collision = !record_board_collision;
         record_start_time = DateTime.Now.TimeOfDay.TotalMilliseconds;
     }
+    //save latency data to data.csv
     public void StoreLatencyData()
     {
         Debug.Log("Created data file");
@@ -103,6 +130,7 @@ public class BalanceBoardSensor : MonoBehaviour
             writer.WriteLine(avglatency);
         }
     }
+    //save mouse + board sensor data
     public void SaveMouseBoardData(){
         List<double[]>[] raw_data = {
                                         new List<double[]>(board_recording[0]),
@@ -110,7 +138,7 @@ public class BalanceBoardSensor : MonoBehaviour
                                         new List<double[]>(board_recording[2]),
                                         new List<double[]>(board_recording[3])
                                         };
-        List<double> mosue_data = new List<double>(mouse_click_record);
+        List<double> mouse_data = new List<double>(mouse_click_record);
         List<string> lines = new List<string>();
         for (int i = 0; i < raw_data.Length; i++)
         {
@@ -131,7 +159,7 @@ public class BalanceBoardSensor : MonoBehaviour
                     output_line = "Bottom Right raw data";
                     break;
 
-              
+
 
             }
             for (int j = 0; j < raw_data[i].Count; j++)
@@ -143,10 +171,10 @@ public class BalanceBoardSensor : MonoBehaviour
             lines.Add(time);
         }
         string mouse_line = "Mouse Click Times";
-        foreach (double timestamp in mosue_data)
+        foreach (double timestamp in mouse_data)
         {
             mouse_line+= "," + timestamp;
-            
+
         }
         lines.Add(mouse_line);
         using (StreamWriter writer = new StreamWriter("Assets/BalanceBoard/mouse.csv"))
@@ -158,6 +186,8 @@ public class BalanceBoardSensor : MonoBehaviour
         }
 Debug.Log("Done");
     }
+
+    //save headset and board data
     public void StoreVRvsBoardReadings()
     {
         Debug.Log("Created data file");
@@ -189,7 +219,7 @@ Debug.Log("Done");
                     output_line = "Bottom Right raw data";
                     break;
 
-              
+
 
             }
             for (int j = 0; j < raw_data[i].Count; j++)
@@ -219,28 +249,31 @@ Debug.Log("Done");
 Debug.Log("Done");
 
     }
-    public void RecordBoard(string msg_parts)
-    {
-     
-        Record_Raw(msg_parts);
-        
-    }
+
+
+    //Record headset vertical height
     public void RecordHeadsetVertical()
-    {   
+    {
         try
         {
-             Headset_record.Add(new double[] { (double) camera.position.y, DateTime.Now.TimeOfDay.TotalMilliseconds-record_start_time });
+          //take difference from starttime and current time
+             Headset_record.Add(new double[] { (double) headsetcamera.position.y, DateTime.Now.TimeOfDay.TotalMilliseconds-record_start_time });
         }
         catch (System.Exception e)
         {
             Debug.Log(e);
             throw;
         }
-        
-        
+
+
     }
+    public void toggleWeightCalculation(){
+        calculateWeight = !calculateWeight;
+    }
+    //record raw data from balance board
     public void Record_Raw(string msg_parts)
     {
+      //get corresponding index of sensor to list of sensor readings, and get current value of that sensor
         int i;
         double value;
         switch (msg_parts)
@@ -266,8 +299,8 @@ Debug.Log("Done");
                 return;
 
         }
-        
+        //add reading to list, along with timestamp of data collection
         board_recording[i].Add(new double[] { (double)value, DateTime.Now.TimeOfDay.TotalMilliseconds-record_start_time });
-       
+
     }
 }

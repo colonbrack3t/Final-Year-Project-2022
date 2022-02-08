@@ -10,11 +10,16 @@ public class EstimateHeight : MonoBehaviour
     public float maxTime = 4f, collecting = 4f;
     public Transform camera, controller;
     public GameObject wiiboard;
+
+    [SerializeField] appmanager AppManager;
     public void collectData(){
         if (pointer < 4){collecting = 0;}
     }
     public void setHeightToController(){
        SetBoardAndAnkle(controller.position);
+   }
+   public void lockInHeighToController(){
+        AppManager.stage = appmanager.Stage.StartGetWeight;
    }
     void Update(){
         if (collecting<maxTime){

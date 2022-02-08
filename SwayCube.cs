@@ -4,36 +4,56 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SwayCube : MonoBehaviour
 {
-    public Text HUD;
 
-    public Transform head;
-    public float head_modifier = 20f, board_modifier = 0.5f, maxVelocity =5;
-    public Transform ankleJoint;
-    public BalanceBoardSensor bbs;
-    Vector3 startingPosition;
-    float sqrMaxVelocity;
-    Rigidbody r;
+    // Headset transform
+    [SerializeField] private Transform head;
+    //overall sensitivity of sway
+    [SerializeField] private float sensitivity = 1;
+    //individual sensitivity of head and board
+    [SerializeField] private float head_modifier = 20f, board_modifier = 0.5f;
+    // location of user's ankle
+    [SerializeField] private Transform ankleJoint;
+    //Balance board sensor object, has realtime sensor values
+    [SerializeField] private BalanceBoardSensor bbs;
+
+    //Starting location of object
+    private Vector3 startingPosition;
+
+    public bool enableSway = false;
     // Start is called before the first frame update
     void Start()
-    {sqrMaxVelocity = maxVelocity*maxVelocity;
-        r = GetComponent<Rigidbody>();
+    {
+        // get initial position
         startingPosition = transform.position;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //float  angle = modifier * Vector3.SignedAngle(head.position-ankleJoint.position, ankleJoint.up, Vector3.right);
-        //Debug.Log(startingPosition);
-        float dist = (head.position.z - ankleJoint.position.z);
+    void FixedUpdate()
+    {if(enableSway){Sway();}
         
-        double top = bbs.rwTopLeft + bbs.rwTopRight;
-        double btm = bbs.rwBottomLeft + bbs.rwBottomRight;
-        double displacement = top - btm;
-        dist *= head_modifier;
+    }
+    void Sway(){
+        // horizontal 2d distance between headset and feet
+        float head_dist = (head.position.z - ankleJoint.position.z);
+        // sum readings of front 2 sensors
+        double top_sensor = bbs.rwTopLeft + bbs.rwTopRight;
+        // sum readings of back 2 sensors
+        double btm_sensor = bbs.rwBottomLeft + bbs.rwBottomRight;
+        //calculate total weight of person 
+        double weight = top_sensor + btm_sensor;
+        // measure difference between front and back sensors - this should correlate to the user leaning forward vs back
+        //displacement is normalised by total weight
+        double displacement = (top_sensor - btm_sensor)/bbs.weight;
+
+        // multiply measures by weights
+        head_dist *= head_modifier;
         displacement *= board_modifier;
-        transform.position = startingPosition +  new Vector3(0,0,(float)(dist + displacement));
-        
-        HUD.text = "dist : " + dist/head_modifier + "\nboard : " + displacement/board_modifier + "\n mod vals: "+ (float)(dist + displacement);
+        // sum weighted measures and apply overall sensitivity parameter
+        float coordinate_modifier = sensitivity * (float)(head_dist + displacement);
+        //moce transform position
+        transform.position = startingPosition +  new Vector3(0,0,coordinate_modifier);
+
     }
 }
+//TODO: Factor in varying weights
+// for weight just divide by users weight

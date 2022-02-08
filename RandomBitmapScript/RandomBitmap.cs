@@ -5,18 +5,21 @@ using UnityEngine.UI;
 using System;
 public class RandomBitmap : MonoBehaviour
 {
-    public UnityEngine.UI.Image img;
+  /*
+  The idea for this code was to use small pixel sized points on the unity canvas to use as our peripheral vision
+  this was to reduce processing power of multiple 3d objects
+  The idea was scrapped as these particles move with the headset, therefore do not feel as though they are in the peripheral vision
+  but instead in the foreground
+    
+  */
+  public UnityEngine.UI.Image img;
     // Start is called before the first frame update
     void Start()
     {
-img.sprite = CreateRandomBitmapCircle();
+      img.sprite = CreateRandomBitmapCircle();
 
-        
     }
-    void FixedUpdate()
-    {
-        
-    }
+//Creates a sprite which is 1024x1024 squares, each randomly either black or white
     Sprite CreateRandomBitmap()
     {
         int x_len = 1024, y_len = 1024;
@@ -34,6 +37,7 @@ img.sprite = CreateRandomBitmapCircle();
         return Sprite.Create(bitmap, new Rect(0.0f, 0.0f, x_len, y_len), new Vector2(0, 0));
 
     }
+    //creates a sprite 1024x1024 squares each randomly black or white, but with a circle hole in the middle which the user will be able to see through
     Sprite CreateRandomBitmapCircle()
     {
         int x_len = 1024, y_len = 1024;
@@ -58,11 +62,7 @@ img.sprite = CreateRandomBitmapCircle();
                 }
             }
         }
-
-
-
         bitmap.Apply();
-
         return Sprite.Create(bitmap, new Rect(0.0f, 0.0f, x_len, y_len), new Vector2(0, 0));
 
     }
