@@ -15,7 +15,7 @@ Once you have a functioning Unity XR project, moving this repository into the As
 Whether you have built your own binary or are running the executable found in the releases, in order to run the simulation you must run the application from the VR console. To do this with an Oculus Quest, simply connect to your device via Link, and run the executable / Unity project. The process is similar for other VR consoles, typically making use of SteamVR. 
 The device which the project is running on will display the correct answers to each stroop test presented to the user. 
 
-### Using and understanding the souce code
+### Using and understanding the source code
 
 ### Wii Board
 The Wii board gameobject contains all relevant scripts needed. These scripts are "Balance Board Sensor" and "Estimate Height".
