@@ -55,5 +55,3 @@ public class SwayCube : MonoBehaviour
 
     }
 }
-//TODO: Factor in varying weights
-// for weight just divide by users weight

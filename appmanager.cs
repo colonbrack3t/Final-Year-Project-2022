@@ -6,7 +6,7 @@ public class appmanager : MonoBehaviour
 {
     [SerializeField] SwayCube[] tunnels;
     [SerializeField] BalanceBoardSensor board;
-[SerializeField] StroopTest stroopTest;
+    [SerializeField] StroopTest stroopTest;
     [SerializeField] Text user_text;
     private double time_for_weight_est = 5f;
 
