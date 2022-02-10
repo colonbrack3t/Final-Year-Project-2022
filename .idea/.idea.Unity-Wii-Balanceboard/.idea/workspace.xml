@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f7e8a7cd-ce95-46b8-8584-8f7d06e632e4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Wii-Balanceboard-server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Wii-Balanceboard-server/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wii-Balanceboard-server/bin/Debug/Wii_Balanceboard_client.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Wii-Balanceboard-server/bin/Debug/Wii_Balanceboard_client.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wii-Balanceboard-server/bin/Debug/Wii_Balanceboard_client.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Wii-Balanceboard-server/bin/Debug/Wii_Balanceboard_client.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wii-Balanceboard-server/bin/Debug/plot_weights.py" beforeDir="false" afterPath="$PROJECT_DIR$/Wii-Balanceboard-server/bin/Debug/plot_weights.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wii-Balanceboard-server/obj/Debug/Wii_Balanceboard_client.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Wii-Balanceboard-server/obj/Debug/Wii_Balanceboard_client.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wii-Balanceboard-server/obj/Debug/Wii_Balanceboard_client.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Wii-Balanceboard-server/obj/Debug/Wii_Balanceboard_client.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VR Balance Board Calibration project/Assets/BalanceBoard/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../VR Balance Board Calibration project/Assets/BalanceBoard/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VR Balance Board Calibration project/Assets/BalanceBoard/graph_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/../VR Balance Board Calibration project/Assets/BalanceBoard/graph_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VR Balance Board Calibration project/Assets/BalanceBoard/plot_mouse.py" beforeDir="false" afterPath="$PROJECT_DIR$/../VR Balance Board Calibration project/Assets/BalanceBoard/plot_mouse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VR Balance Board Calibration project/Assets/BalanceBoard/spacebarplot.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Wii-Balanceboard-server/Program.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Wii-Balanceboard-server/Program.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="20xmArq8DtEldtVyhdXOaB7eyt2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Wii-Balanceboard-server" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Wii-Balanceboard-server/Wii-Balanceboard-server.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7e8a7cd-ce95-46b8-8584-8f7d06e632e4" name="Default Changelist" comment="" />
+      <created>1636994474310</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636994474310</updated>
+      <workItem from="1636994483451" duration="583000" />
+      <workItem from="1637146066265" duration="5055000" />
+      <workItem from="1637746193888" duration="21453000" />
+      <workItem from="1638273000045" duration="29636000" />
+      <workItem from="1639577961327" duration="6846000" />
+      <workItem from="1641564280290" duration="1271000" />
+      <workItem from="1643223704226" duration="7479000" />
+      <workItem from="1643629308175" duration="3198000" />
+      <workItem from="1643727034904" duration="196000" />
+      <workItem from="1643731476744" duration="4356000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom" timestamp="1643972766478">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1643972766478" />
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1080@0.0.1920.1040" timestamp="1643725146713" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.378.1920.1040@0.0.1920.1040" timestamp="1637149679112" />
+    <state width="1877" height="183" key="GridCell.Tab.0.center" timestamp="1643972766478">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="183" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1643972766478" />
+    <state width="1877" height="183" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1080@0.0.1920.1040" timestamp="1643725146713" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.378.1920.1040@0.0.1920.1040" timestamp="1637149679111" />
+    <state width="1877" height="183" key="GridCell.Tab.0.left" timestamp="1643972766478">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="183" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1643972766478" />
+    <state width="1877" height="183" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1080@0.0.1920.1040" timestamp="1643725146713" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.378.1920.1040@0.0.1920.1040" timestamp="1637149679111" />
+    <state width="1877" height="183" key="GridCell.Tab.0.right" timestamp="1643972766478">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="183" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1643972766478" />
+    <state width="1877" height="183" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1080@0.0.1920.1040" timestamp="1643725146713" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.378.1920.1040@0.0.1920.1040" timestamp="1637149679111" />
+  </component>
+</project>

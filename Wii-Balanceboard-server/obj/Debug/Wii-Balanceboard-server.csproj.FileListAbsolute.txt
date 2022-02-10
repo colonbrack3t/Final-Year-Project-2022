@@ -7,3 +7,19 @@ C:\Users\Ludo\RiderProjects\Unity-Wii-Balanceboard\Wii-Balanceboard-server\bin\D
 C:\Users\Ludo\RiderProjects\Unity-Wii-Balanceboard\Wii-Balanceboard-server\bin\Debug\Wii_Balanceboard_client.pdb
 C:\Users\Ludo\RiderProjects\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii_Balanceboard_client.exe
 C:\Users\Ludo\RiderProjects\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii_Balanceboard_client.pdb
+C:\Users\Ludovico\Final-Year-Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii-Balanceboard-server.csprojAssemblyReference.cache
+C:\Users\Ludovico\Final-Year-Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii-Balanceboard-server.csproj.CoreCompileInputs.cache
+C:\Users\Ludovico\Final-Year-Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii_Balanceboard_client.exe
+C:\Users\Ludovico\Final-Year-Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii_Balanceboard_client.pdb
+C:\Users\Ludovico\Final-Year-Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\bin\Debug\Wii_Balanceboard_client.exe
+C:\Users\Ludovico\Final-Year-Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\bin\Debug\Wii_Balanceboard_client.pdb
+C:\Users\Ludovico\Final-Year-Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii-Balanceboard-server.csproj.CopyComplete
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\bin\Debug\Wii_Balanceboard_client.exe
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\bin\Debug\WiimoteLib.dll
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii-Balanceboard-server.csproj.AssemblyReference.cache
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii-Balanceboard-server.csproj.SuggestedBindingRedirects.cache
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii-Balanceboard-server.csproj.CoreCompileInputs.cache
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii-Balanceboard-server.csproj.CopyComplete
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii_Balanceboard_client.exe
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\obj\Debug\Wii_Balanceboard_client.pdb
+C:\Users\Ludo\Final Year Project\Unity-Wii-Balanceboard\Wii-Balanceboard-server\bin\Debug\Wii_Balanceboard_client.pdb
