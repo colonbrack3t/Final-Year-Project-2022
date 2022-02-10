@@ -40,12 +40,20 @@ This class also performs a toggleable weight estimation, by recording the sensor
 
 #### Estimate Height
 This class is mostly deprecated. Originally the user would be asked to lean back and forth in order to estimate where their pivot point is. This has been removed in favour of the user setting where their feet are using the controller. The user can press the primary button on the right to set the wiiboard object to their right controller. They can press right trigger to lock in the change.
-#### Sway mechanic
-There are different attempts at moving objects in convincing ways. Swaycube.cs is the current implementation, which had the best results and has been developed past a prototype.
+#### Swaying Particles
+There are different attempts at moving objects in convincing ways. Swaycube.cs + GenerateParticles.cs is the current implementation, which had the best results and has been developed past a prototype.
+##### Sway Cube & Generate Particles
+Both these classes are implemented onto GameObjects called "Tunnel". Generate Particles generates particles in either a spherical or cylindrical shape, with every feature of either  object fully customizable from the inspector menu. These are capable of generating thousands of small sphere objects which are minimally expensive to compute. Swaycube is responsible for movement of these tunnels. Swaycube uses the Wiiboard weight and sensor readings as well as the z position of the headset to set the z position of its object. Weight is used to normalise the sensor readings.
 
-#### Stroop test
+##### Other attempts at moving objects
+The "Accentuate" scripts aimed to exagerate the movement of the headset by over-rotating the camera. This idea was quickly scrapped due to no obvious way to incorporate the wiiboard/force plate, and the potential for nausea.
+
+The Moving UI scripts aimed to utilise 2D images to effectively directly manipulate pixels on the VR headset to reduce computational effort of generating 3d objects. However this actually appeared to use more computational power to make convincing smooth movement, especially as the UI camera uses an orthographic camera.
+
+#### Stroop test 
+The stroop test script is simple, upon being prompted the script sets a text field with a random word from a list of colours and sets the font color to a random preset list of colours. It also sets an image element to the chosen colour, which is only visible on the computer, such that the tester can see if the user got the right answer. 
 #### App Manager
-This operates similarly to a Game Manager,  acting as a central point that conducts what is being done when.
+This operates similarly to a Game Manager,  acting as a central point that conducts what is being done when. This is implemented using a switch clause on the current stage.
 ##### Stage enum
 This simple enum holds every stage progession of the project, such that we can easily decide what to do in the Update() function based on the current stage.
 
