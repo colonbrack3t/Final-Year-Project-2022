@@ -1324,6 +1324,8 @@ MonoBehaviour:
   end: 500
   direction: 1
   text: {fileID: 1274906297}
+  start_pos: {x: 0, y: 0, z: 0}
+  t: 0
 --- !u!114 &1131021890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,6 +1362,7 @@ MonoBehaviour:
   start: 500
   end: -100
   direction: -1
+  start_pos: {x: 0, y: 0, z: 0}
 --- !u!114 &1131021892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,15 +2271,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1705035858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22d7c75c57a0d914eb2d2a6a117a0f11, type: 3}
+  m_Script: {fileID: 11500000, guid: 914c8668823c57c4385c6342b126e72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 2
-  sinwidth: 0.4
-  sinspeed: 2
   start: -100
   end: 500
   direction: 1
+  movespeed: 2
+  sinwidth: 0.4
+  sinspeed: 2
   text: {fileID: 1274906297}
 --- !u!114 &1705035860
 MonoBehaviour:
@@ -2314,6 +2317,7 @@ MonoBehaviour:
   start: 500
   end: -100
   direction: -1
+  start_pos: {x: 0, y: 0, z: 0}
 --- !u!114 &1705035862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2341,7 +2345,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705035859}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: sinusoidalLoopedMovement, Assembly-CSharp
         m_MethodName: decreaseSinspeed
         m_Mode: 1
@@ -2357,7 +2361,7 @@ MonoBehaviour:
     m_ActionName: SinWave/Decrease wavelength
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705035859}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: sinusoidalLoopedMovement, Assembly-CSharp
         m_MethodName: increaseSinspeed
         m_Mode: 1
@@ -2373,7 +2377,7 @@ MonoBehaviour:
     m_ActionName: SinWave/Increase Wavelength
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705035859}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: sinusoidalLoopedMovement, Assembly-CSharp
         m_MethodName: decreaseSinWidth
         m_Mode: 1
@@ -2389,7 +2393,7 @@ MonoBehaviour:
     m_ActionName: SinWave/Decrease Waveheight
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705035859}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: sinusoidalLoopedMovement, Assembly-CSharp
         m_MethodName: increaseSinWidth
         m_Mode: 1
@@ -2405,7 +2409,7 @@ MonoBehaviour:
     m_ActionName: SinWave/Increase Waveheight
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705035859}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: sinusoidalLoopedMovement, Assembly-CSharp
         m_MethodName: decreaseBaseSpeed
         m_Mode: 1
@@ -2421,7 +2425,7 @@ MonoBehaviour:
     m_ActionName: SinWave/Decrease base speed
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705035859}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: sinusoidalLoopedMovement, Assembly-CSharp
         m_MethodName: increaseBaseSpeed
         m_Mode: 1
@@ -2507,6 +2511,8 @@ MonoBehaviour:
   end: 500
   direction: 1
   text: {fileID: 1274906297}
+  start_pos: {x: 0, y: 0, z: 0}
+  t: 0
 --- !u!114 &2084226554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2543,6 +2549,7 @@ MonoBehaviour:
   start: 500
   end: -100
   direction: -1
+  start_pos: {x: 0, y: 0, z: 0}
 --- !u!114 &2084226556
 MonoBehaviour:
   m_ObjectHideFlags: 0
