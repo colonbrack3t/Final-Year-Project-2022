@@ -4,7 +4,7 @@ using UnityEngine;
 public class LoopedObject : MonoBehaviour
 {
 private Vector3 start_pos, end_pos;
-[SerializeField] private float start = -100, end = 100, direction = 1;
+[SerializeField] protected float start = -100, end = 100, direction = 1;
     public virtual void Start()
     {
         start_pos = new Vector3(0, 0, start);
