@@ -1,0 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+public class SinLoopedObject: LoopedBoardReader
+{
+    public override void Update(){
+        base.Update();
+        
+        sin_move()
+    }
+    priavte void sin_move()
+
+}

@@ -1,0 +1,3 @@
+interface ISway{
+    void Sway();
+}
