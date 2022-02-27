@@ -8,7 +8,7 @@ public class SwayCube : MonoBehaviour
     // Headset transform
     [SerializeField] private Transform head;
     //overall sensitivity of sway
-    [SerializeField] private float sensitivity = 1;
+    [SerializeField] private float sensitivity = 1, maxSpeed = 2.2f;
     //individual sensitivity of head and board
     [SerializeField] private float head_modifier = 20f, board_modifier = 0.5f;
     // location of user's ankle
@@ -33,8 +33,8 @@ public class SwayCube : MonoBehaviour
         
     }
     void Sway(){
-        // horizontal 2d distance between headset and feet
-        float head_dist = (head.position.z - ankleJoint.position.z);
+        float displacement;
+        
         // sum readings of front 2 sensors
         double top_sensor = bbs.rwTopLeft + bbs.rwTopRight;
         // sum readings of back 2 sensors
@@ -43,15 +43,28 @@ public class SwayCube : MonoBehaviour
         double weight = top_sensor + btm_sensor;
         // measure difference between front and back sensors - this should correlate to the user leaning forward vs back
         //displacement is normalised by total weight
-        double displacement = (top_sensor - btm_sensor)/bbs.weight;
-
+        displacement =(float) ((top_sensor - btm_sensor)/bbs.weight);
+        Debug.Log(displacement + " , weight: " + bbs.weight);
+        // multiply measures by weights
+        displacement *= board_modifier;
+        // horizontal 2d distance between headset and feet
+        float head_dist = (head.position.z - ankleJoint.position.z);
         // multiply measures by weights
         head_dist *= head_modifier;
-        displacement *= board_modifier;
-        // sum weighted measures and apply overall sensitivity parameter
-        float coordinate_modifier = sensitivity * (float)(head_dist + displacement);
+        // apply head dist mod
+        displacement += head_dist;
+        //apply sensitivity parameter
+        displacement *= sensitivity;
+        //apply max movement constraint
+        displacement =Mathf.Min(displacement, maxSpeed);
+        
+        //reduce to per frame speed
+         
+
         //moce transform position
-        transform.position = startingPosition +  new Vector3(0,0,coordinate_modifier);
+        transform.position = startingPosition +  new Vector3(0,0,displacement);
 
     }
+    
+    //TODO make this move on input and loop, instead of set position 
 }
