@@ -13,7 +13,9 @@ using UnityEngine;
     [SerializeField] private Transform ankleJoint;
     //Balance board sensor object, has realtime sensor values
     [SerializeField] private BalanceBoardSensor bbs;
+    public bool enableSway = false;
     protected float BoardReading(){
+        if (!enableSway) return 0;
         float displacement;
         
         // sum readings of front 2 sensors
