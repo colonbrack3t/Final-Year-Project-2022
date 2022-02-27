@@ -46,11 +46,16 @@ public class appmanager : MonoBehaviour
             //wait 1s then 
             time_for_delay-= Time.deltaTime;
             if (time_for_delay < 0)
-                    {stage = Stage.StroopTest;
-                    stroopTest.GenerateStroopTest();
-                    }
-            // enable sway cubes
-            // start stroop test
+                    {
+                        stage = Stage.StroopTest;
+                        stroopTest.test_running = true;
+                        stroopTest.GenerateStroopTest();
+                        foreach (var t in tunnels)
+                        {
+                            t.enableSway = true;
+                        }
+                        }
+            
 
                 break;
             case Stage.StroopTest:
