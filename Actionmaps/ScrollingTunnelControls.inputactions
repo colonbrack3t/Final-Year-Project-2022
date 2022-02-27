@@ -1,0 +1,52 @@
+{
+    "name": "ScrollingTunnelControls",
+    "maps": [
+        {
+            "name": "VR",
+            "id": "71867b58-cf46-46ae-bd9f-a9ea0a5e8dfd",
+            "actions": [
+                {
+                    "name": "Speedup",
+                    "type": "Button",
+                    "id": "edf468d4-fd78-4e00-89b2-cc1b2c84a45f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SlowDown",
+                    "type": "Button",
+                    "id": "ba70c98b-9761-43cb-9d43-aa99c93e6b91",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "eab11f0d-a992-4adb-936d-f25e9b205acf",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Speedup",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9929ebb3-c954-47c9-bf8d-059f7b0da693",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlowDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

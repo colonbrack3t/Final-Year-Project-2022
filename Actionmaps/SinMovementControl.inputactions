@@ -1,0 +1,128 @@
+{
+    "name": "SinMovementControl",
+    "maps": [
+        {
+            "name": "SinWave",
+            "id": "448ef1bd-8893-491b-9e0f-7bf58e99d9f9",
+            "actions": [
+                {
+                    "name": "Decrease wavelength",
+                    "type": "Button",
+                    "id": "a50ba72b-273d-4977-890f-74147bdd8c07",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Increase Wavelength",
+                    "type": "Button",
+                    "id": "439d2b42-7a51-43f7-bd6c-cecd52522b01",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Decrease Waveheight",
+                    "type": "Button",
+                    "id": "2228fa59-5f8c-4f5e-ab7d-93eb10e1544c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Increase Waveheight",
+                    "type": "Button",
+                    "id": "aae3c6a3-976a-4ace-a700-0d2a018f5f49",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Decrease base speed",
+                    "type": "Button",
+                    "id": "4ea13453-f574-4879-9448-fe8ae52a16e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Increase base speed",
+                    "type": "Button",
+                    "id": "f4bccd5c-d1ac-4d88-9b51-be53d811ba36",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d3be25d6-bbeb-4528-b5d2-f7014b6d4dd9",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decrease wavelength",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56dcd919-aada-41ec-be3b-7f1e72458f08",
+                    "path": "<XRController>{LeftHand}/gripPressed",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Increase Wavelength",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "068a2532-75e1-4136-9b93-98fd1266b0e5",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decrease Waveheight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "234cf1ee-36c6-41f9-af35-4710a03e665d",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Increase Waveheight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e399e38-0087-47a1-ae4c-473e9640dd25",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decrease base speed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfa3d25e-01d3-4b0e-b3ac-36741b2b9304",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Increase base speed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
