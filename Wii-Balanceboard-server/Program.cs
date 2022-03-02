@@ -34,7 +34,7 @@ namespace Wii_Balanceboard_client
         {
             
             //establish client
-            c.Client("127.0.0.1", 27334);
+            c.Client("127.0.0.1", 27335);
 
             //attempt connect wiimote
             var connected = Connect_Device();
