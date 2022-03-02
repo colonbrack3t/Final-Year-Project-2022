@@ -22,12 +22,10 @@ using UnityEngine;
         double top_sensor = bbs.rwTopLeft + bbs.rwTopRight;
         // sum readings of back 2 sensors
         double btm_sensor = bbs.rwBottomLeft + bbs.rwBottomRight;
-        //calculate total weight of person 
-        double weight = top_sensor + btm_sensor;
         // measure difference between front and back sensors - this should correlate to the user leaning forward vs back
         //displacement is normalised by total weight
         displacement =(float) ((top_sensor - btm_sensor)/bbs.weight);
-        Debug.Log(displacement + " , weight: " + bbs.weight);
+        Debug.Log(displacement + " , weight: " + bbs.weight + " , top - btm " + (top_sensor - btm_sensor));
         // multiply measures by weights
         displacement *= board_modifier;
         // horizontal 2d distance between headset and feet
@@ -38,6 +36,7 @@ using UnityEngine;
         displacement += head_dist;
         //apply sensitivity parameter
         displacement *= sensitivity;
+
 
         return displacement;
     }
