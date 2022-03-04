@@ -29,7 +29,7 @@ public class GenerateParticles : MonoBehaviour
         }
     }
     void makeSphere(){
-        for(int i = 0; i < num_of_particles; i++){
+        /*for(int i = 0; i < num_of_particles; i++){
             GameObject p = Instantiate(particle, Tunnel.transform);
             float z = Random.Range(-max_radius, max_radius)/2;
             float newRmin = 0;
@@ -41,6 +41,7 @@ public class GenerateParticles : MonoBehaviour
             float y = radius * Mathf.Sin(angle);
             float x = radius * Mathf.Cos(angle);
             p.transform.localPosition = new Vector3(x,y,z);
-        }
+        }*/
+        
     }
 }
