@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761fdd4502cb7a84e9ec7a2b24f33f37, type: 3}
   m_Name: MicrosoftMotionControllerProfile Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Microsoft Motion Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.microsoftmotioncontroller
@@ -59,12 +59,11 @@ MonoBehaviour:
   - {fileID: 8960599981676102660}
   - {fileID: 5469564635786269072}
   - {fileID: -9191190195381549232}
-  - {fileID: 2127605984765573887}
   - {fileID: 6958305839054572821}
   - {fileID: 3450265406322743623}
   - {fileID: -3502722793929693617}
   - {fileID: -6403033886637175492}
-  m_renderMode: 1
+  m_renderMode: 0
   m_depthSubmissionMode: 0
 --- !u!114 &-3953381878466098028
 MonoBehaviour:
