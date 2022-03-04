@@ -4,22 +4,31 @@ using UnityEngine;
 public class LoopedObject : MonoBehaviour
 {
 private Vector3 start_pos, end_pos;
+
+
+    
+
 [SerializeField] protected float start = -100, end = 100, direction = 1;
+
+    [SerializeField] Transform[] targets;
     public virtual void Start()
     {
         start_pos = new Vector3(0, 0, start);
         end_pos = new Vector3(0, 0, end);
+        if (targets == null)
+            targets = new Transform[]{this.transform};
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
-        if (transform.position.z * direction > end * direction ){
-            transform.position = start_pos;
+        foreach (var target in targets){
+        if (target.position.z * direction > end * direction ){
+            target.position = start_pos;
         }
-        if (transform.position.z * direction < start * direction ){
-            transform.position = end_pos;
-        }
+        if (target.position.z * direction < start * direction ){
+            target.position = end_pos;
+        }}
         
     }
 }

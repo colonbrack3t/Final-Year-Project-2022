@@ -7,6 +7,10 @@ public class SinLoopedObject: LoopedObject
     [SerializeField] float movespeed = 2f, sinwidth = 0.2f, sinspeed = 1;
     [SerializeField] Text text;
     private float t;
+
+
+
+
     public override void Update(){
         base.Update();
         
@@ -25,7 +29,8 @@ public class SinLoopedObject: LoopedObject
         
         //update position
         Vector3 move = new Vector3(0,0, direction * sinwave) * Time.deltaTime; 
-        transform.position += move;
+        foreach (var target in targets)
+        target.position += move;
     }
 
 }
