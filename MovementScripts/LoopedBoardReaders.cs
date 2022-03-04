@@ -2,7 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
- public class LoopedBoardReaders : LoopedObject
+ public class LoopedBoardReaders : LoopedObjects
 {
     // Headset transform
     [SerializeField] private Transform head;

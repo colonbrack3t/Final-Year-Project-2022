@@ -9,6 +9,7 @@ public class GenerateParticles : MonoBehaviour
     [SerializeField] int num_of_particles;
     [SerializeField] int min_radius, max_radius, tunnel_min_length, tunnel_max_length;
     [SerializeField] bool sphere = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class GenerateParticles : MonoBehaviour
         else makeTunnel();
     }
 
-    void makeTunnel(){
+    public void makeTunnel(){
         for(int i = 0; i < num_of_particles; i++){
             GameObject p = Instantiate(particle, Tunnel.transform);
             float radius = Random.Range(min_radius, max_radius);

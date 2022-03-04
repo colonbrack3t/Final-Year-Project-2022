@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class SinSwayObjects: LoopedBoardReader, ISway
+public class SinSwayObjects: LoopedBoardReaders, ISway
 {
     [SerializeField] float movespeed = 2f, sinwidth = 0.2f, sinspeed = 1;
     private float t;
