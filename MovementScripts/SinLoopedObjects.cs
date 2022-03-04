@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class SinLoopedObject: LoopedObjects
+public class SinLoopedObjects: LoopedObjects
 {
     [SerializeField] float movespeed = 2f, sinwidth = 0.2f, sinspeed = 1;
     [SerializeField] Text text;

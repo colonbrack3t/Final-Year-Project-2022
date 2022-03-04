@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class LoopedObject : MonoBehaviour
+public class LoopedObjects : MonoBehaviour
 {
 private Vector3 start_pos, end_pos;
 
@@ -10,7 +10,7 @@ private Vector3 start_pos, end_pos;
 
 [SerializeField] protected float start = -100, end = 100, direction = 1;
 
-    [SerializeField] Transform[] targets;
+    [SerializeField] protected Transform[] targets;
     public virtual void Start()
     {
         start_pos = new Vector3(0, 0, start);

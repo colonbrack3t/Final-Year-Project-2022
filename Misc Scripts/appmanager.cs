@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class appmanager : MonoBehaviour
 {
-    [SerializeField] LoopedBoardReader[] tunnels;
+    [SerializeField] LoopedBoardReaders[] tunnels;
     [SerializeField] BalanceBoardSensor board;
     [SerializeField] StroopTest stroopTest;
     [SerializeField] Text user_text;
