@@ -8,15 +8,39 @@ public class GenerateParticles : MonoBehaviour
     [SerializeField] GameObject Tunnel;
     [SerializeField] int num_of_particles;
     [SerializeField] int min_radius, max_radius, tunnel_min_length, tunnel_max_length;
-    [SerializeField] bool sphere = false;
-    
+    [SerializeField] Shape shape = Shape.Tunnel;
+    enum Shape{Tunnel, Sphere, Cloud}
     // Start is called before the first frame update
     void Start()
     {
-        if(sphere) makeSphere(); 
-        else makeTunnel();
+        switch(shape){
+            case Shape.Tunnel:
+             makeTunnel();
+             break;
+            case Shape.Sphere:
+             makeSphere();
+             break;
+            case Shape.Cloud:
+             makeCloud();
+             break;
+        }
     }
-
+    void makeCloud(){
+        for(int i = 0; i < num_of_particles; i++){
+            GameObject p = Instantiate(particle, Tunnel.transform);
+             
+            p.transform.localPosition = find_valid_coords(min_radius, max_radius);
+        }
+    }
+    Vector3 find_valid_coords (float min, float max){
+        float x = 0, y = 0, z = 0;
+        do {
+            x = Random.Range(-max, max);
+            y = Random.Range(-max, max);
+            z = Random.Range(-max, max);
+        }while(Mathf.Abs(x) < min && Mathf.Abs(y) < min && Mathf.Abs(z) < min);
+        return new Vector3(x , y ,z);
+    }
     public void makeTunnel(){
         for(int i = 0; i < num_of_particles; i++){
             GameObject p = Instantiate(particle, Tunnel.transform);
@@ -29,7 +53,7 @@ public class GenerateParticles : MonoBehaviour
         }
     }
     void makeSphere(){
-        /*for(int i = 0; i < num_of_particles; i++){
+        for(int i = 0; i < num_of_particles; i++){
             GameObject p = Instantiate(particle, Tunnel.transform);
             float z = Random.Range(-max_radius, max_radius)/2;
             float newRmin = 0;
@@ -41,7 +65,7 @@ public class GenerateParticles : MonoBehaviour
             float y = radius * Mathf.Sin(angle);
             float x = radius * Mathf.Cos(angle);
             p.transform.localPosition = new Vector3(x,y,z);
-        }*/
+        }
         
     }
 }

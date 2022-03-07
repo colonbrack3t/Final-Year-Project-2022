@@ -2,7 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
- public class LoopedBoardReaders : LoopedObjects
+ public class LoopedMovementReaders : LoopedObjects
 {
     // Headset transform
     [SerializeField] private Transform head;
@@ -16,7 +16,7 @@ using UnityEngine;
     [SerializeField] private BalanceBoardSensor bbs;
     public bool enableSway = false;
     double last_displacement = 0.5;
-
+    Vector3 last_head_movement = new Vector3(0,0,0); 
     protected float BoardReading(){
         if (!enableSway ) return 0;
         
@@ -39,8 +39,17 @@ using UnityEngine;
         b1 /= bbs.weight;
         b2 /= bbs.weight;
         */
-        double left_ratio = f1 / (f1 + b1);
-        double right_ratio = f2 / (f2 + b2);
+      /*  double topright_backright = f1 / (f1 + b1);
+        double topleft_backleft = f2 / (f2 + b2);
+        double topright_topleft = f1 / (f1 + f2);
+        double backright_backleft = b1 / (b1 + b2);
+
+        double centre_x = (topright_backright + topleft_backleft)/2;
+        double centre_y = (topright_topleft + backright_backleft)/2;
+    */
+           double right_ratio = f1 / (f1 + b1);
+        double left_ratio = f2 / (f2 + b2);
+
         displacement = (left_ratio + right_ratio)/2f;
         Debug.Log(displacement + " , weight: " + bbs.weight );
         // multiply measures by weights
@@ -49,6 +58,9 @@ using UnityEngine;
         float head_dist = (head.position.z - ankleJoint.position.z);
         // multiply measures by weights
         head_dist *= head_modifier;
+
+
+
         // apply head dist mod
         displacement += head_dist;
         //apply sensitivity parameter

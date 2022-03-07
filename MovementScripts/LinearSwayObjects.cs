@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class LinearSwayObjects : LoopedBoardReaders, ISway
+public class LinearSwayObjects : LoopedMovementReaders, ISway
 {
 
     
