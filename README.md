@@ -9,6 +9,7 @@ First you need to create a Unity Project v2021.2.10 (ideally using Universal pip
 
 Once you have a functioning Unity XR project, moving this repository into the Assets folder should grant everything you need to run the simulation.
 
+From this point you should be able to load the various scenes directly. Should they fail for any reason, or if you want to construct your own scene, refering to this documentation should aid in the reassembly of the scenes. In some cases, if the XR packages have changed, you may have to replace the XR objects in the scene with the up-to-date version.
 
 ## Usage
 ### Running the project on VR
