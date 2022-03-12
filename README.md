@@ -3,7 +3,7 @@ All components of Unity needed to both connect a device to a wiiboard, and to cr
 
 ## Installation
 ### Full build
-Download thre binary from the releases 
+Download thre binary from the releases - not reccomended unless you are happy to use a preset setup, the only way to edit parameters of the setup is utilising the Unity inspector menu
 ### Build from Source
 First you need to create a Unity Project v2021.2.10 (ideally using Universal pipeline). Install XR SDKs and XR tools from the package manager, and enable XR from the preferences menu. For more information check this [video](https://www.youtube.com/watch?v=yxMzAw2Sg5w)
 
