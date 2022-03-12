@@ -3,12 +3,13 @@ All components of Unity needed to both connect a device to a wiiboard, and to cr
 
 ## Installation
 ### Full build
-Download thre binary from the releases 
+Download thre binary from the releases - not reccomended unless you are happy to use a preset setup, the only way to edit parameters of the setup is utilising the Unity inspector menu
 ### Build from Source
 First you need to create a Unity Project v2021.2.10 (ideally using Universal pipeline). Install XR SDKs and XR tools from the package manager, and enable XR from the preferences menu. For more information check this [video](https://www.youtube.com/watch?v=yxMzAw2Sg5w)
 
 Once you have a functioning Unity XR project, moving this repository into the Assets folder should grant everything you need to run the simulation.
 
+From this point you should be able to load the various scenes directly. Should they fail for any reason, or if you want to construct your own scene, refering to this documentation should aid in the reassembly of the scenes. In some cases, if the XR packages have changed, you may have to replace the XR objects in the scene with the up-to-date version.
 
 ## Usage
 ### Running the project on VR
@@ -22,7 +23,7 @@ The Wii board gameobject contains all relevant scripts needed. These scripts are
 
 #### Balance Board Sensor class
 
-This class operates the connection to the balance board [C# client Socket tool](https://github.com/colonbrack3t/wiiboard-unity-scripts/tree/main/Wii-Balanceboard-server). We connect to the client using the UDPSocketUnity class, which inherits from the UDPSocket class (the same one that is used in the client tool). The child class overrides the Recieve function to synchronously update the Balance Board class sensor values. 
+This class operates the connection to the balance board [C# Wiiboard client Socket tool](https://github.com/colonbrack3t/Wiiboard-Socket-Tool). We connect to the client using the UDPSocketUnity class, which inherits from the UDPSocket class (the same one that is used in the client tool). The child class overrides the Recieve function to synchronously update the Balance Board class sensor values. 
 
 **N.B ensure the port matches the client port**
 
@@ -39,14 +40,14 @@ Each of these recordings produce a "data.csv" file after being toggled off. This
 This class also performs a toggleable weight estimation, by recording the sensor readings on all 4 weights. When toggled on, it begins computing the average weight, when toggled off the weight attribute holds the final average weight estimation. The user can be asked to stand still for a few seconds in order to gain an accurate average. 
 
 #### Estimate Height
-This class is mostly deprecated. Originally the user would be asked to lean back and forth in order to estimate where their pivot point is. This has been removed in favour of the user setting where their feet are using the controller. The user can press the primary button on the right to set the wiiboard object to their right controller. They can press right trigger to lock in the change.
-#### Swaying Particles
-There are different attempts at moving objects in convincing ways. Swaycube.cs + GenerateParticles.cs is the current implementation, which had the best results and has been developed past a prototype.
-##### Sway Cube & Generate Particles
-Both these classes are implemented onto GameObjects called "Tunnel". Generate Particles generates particles in either a spherical or cylindrical shape, with every feature of either  object fully customizable from the inspector menu. These are capable of generating thousands of small sphere objects which are minimally expensive to compute. Swaycube is responsible for movement of these tunnels. Swaycube uses the Wiiboard weight and sensor readings as well as the z position of the headset to set the z position of its object. Weight is used to normalise the sensor readings.
+This class is deprecated. Originally the user would be asked to lean back and forth in order to estimate where their pivot point is. This has been removed in favour of the user setting where their feet are using the controller. The user can press the primary button on the right to set the wiiboard object to their right controller. They can press right trigger to lock in the change. 
+#### Particles and Changing Sway
+There are different attempts at moving objects in convincing ways. PendulumMovement.cs + GenerateParticles.cs is the current implementation, which had the best results and has been developed past a prototype.
+##### Pendulum Movement & Generate Particles
+Generate Partilces is implemented onto GameObjects called "Tunnel". Generate Particles generates particles in either a spherical, cylindrical or cloud shape, with every feature of the object fully customizable from the inspector menu. These are capable of generating thousands of small sphere objects which are minimally expensive to compute. Pendulum Movement handles the perceived gain in sway when the user moves. It does this by taking the previous frames' head position and the current one, finding the pivot axis and change in angle, and applying a scaled amount rotation around the same axis on the parent object. This cannot be applied to the camera directly but to the parent object, as the VR headset will constantly overrwrite the rotation of the camera object. 
 
 ##### Other attempts at moving objects
-The "Accentuate" scripts aimed to exagerate the movement of the headset by over-rotating the camera. This idea was quickly scrapped due to no obvious way to incorporate the wiiboard/force plate, and the potential for nausea.
+The "Sway" scripts aimed to use wiiboard and head inputs to move the particles such that they appear to have excess gain. This has now been scraped, as it turns out the illusion is too easily deciphered by the bran due to the lack in change of angular velocity.
 
 The Moving UI scripts aimed to utilise 2D images to effectively directly manipulate pixels on the VR headset to reduce computational effort of generating 3d objects. However this actually appeared to use more computational power to make convincing smooth movement, especially as the UI camera uses an orthographic camera.
 
@@ -58,3 +59,11 @@ This operates similarly to a Game Manager,  acting as a central point that condu
 This simple enum holds every stage progession of the project, such that we can easily decide what to do in the Update() function based on the current stage.
 
 ## Troubleshooting
+### Port error on runtime
+If you get an error stating multiple servers cannot be opened on the same port, simply changing the port defined in the BalanceBoard.Start() function should resolve this problem (don't forget to also switch ports on the Wiiboard tool) 
+
+### Wii board connection issues / Wii board tool issues
+Please refer to the [C# Socket Wiiboard tool documentation](https://colonbrack3t.github.io/Wiiboard-Socket-Tool/)
+
+## License+-
+[MIT](https://choosealicense.com/licenses/mit/)
