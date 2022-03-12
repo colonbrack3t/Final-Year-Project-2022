@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+Simple script that generates random particles in different shapes
+*/
 public class GenerateParticles : MonoBehaviour
 {
     [SerializeField] GameObject particle;
     [SerializeField] GameObject Tunnel;
     [SerializeField] int num_of_particles;
-        public Transform camera;
+    public Transform camera;
     [SerializeField] int min_radius, max_radius, tunnel_min_length, tunnel_max_length;
     [SerializeField] Shape shape = Shape.Tunnel;
+    //enum for different formable shapes
     enum Shape{Tunnel, Sphere, Cloud, Grid}
-    // Start is called before the first frame update
+  
     void Start()
     {
         switch(shape){
@@ -27,38 +30,51 @@ public class GenerateParticles : MonoBehaviour
             
         }
     }
- 
-    void makeCloud(){
+    //generic delegate for finding coords
+    delegate Vector3 find_valid_coords();
+
+    // loop through and instantiate particles at given coords, set hideball params
+    void generateParticles(find_valid_coords coords){
         for(int i = 0; i < num_of_particles; i++){
             GameObject p = Instantiate(particle, Tunnel.transform);
              
-            p.transform.localPosition = find_valid_coords(min_radius, max_radius);
+            p.transform.localPosition = coords();
             p.GetComponent<hideball>().camera= camera;
         }
     }
-    Vector3 find_valid_coords (float min, float max){
+    
+    void makeCloud(){
+        generateParticles(find_valid_Cloud_coords);
+    }
+    void makeSphere(){
+        generateParticles(find_valid_Sphere_coords);
+    }
+    void makeTunnel(){
+        generateParticles(find_valid_Tunnel_coords);
+    }
+    //simple random particles, outside of min and within max radius
+    Vector3 find_valid_Cloud_coords (){
         float x = 0, y = 0, z = 0;
         do {
-            x = Random.Range(-max, max);
-            y = Random.Range(-max, max);
-            z = Random.Range(-max, max);
-        }while(Mathf.Abs(x) < min && Mathf.Abs(y) < min && Mathf.Abs(z) < min);
+            x = Random.Range(-max_radius, max_radius);
+            y = Random.Range(-max_radius, max_radius);
+            z = Random.Range(-max_radius, max_radius);
+        }while(Mathf.Abs(x) < min_radius && Mathf.Abs(y) < min_radius && Mathf.Abs(z) < min_radius);
         return new Vector3(x , y ,z);
     }
-    public void makeTunnel(){
-        for(int i = 0; i < num_of_particles; i++){
-            GameObject p = Instantiate(particle, Tunnel.transform);
+    // spawns particles in a hollow cylinder 
+    Vector3 find_valid_Tunnel_coords (){
             float radius = Random.Range(min_radius, max_radius);
             float angle = Random.Range(0, 2*Mathf.PI);
             float y = radius * Mathf.Sin(angle);
             float x = radius * Mathf.Cos(angle);
             float z = Random.Range(tunnel_min_length, tunnel_max_length);
-            p.transform.localPosition = new Vector3(x,y,z);
-        }
+            return new Vector3(x,y,z);
     }
-    void makeSphere(){
-        for(int i = 0; i < num_of_particles; i++){
-            GameObject p = Instantiate(particle, Tunnel.transform);
+    // spawns particles in a hollow sphere (can also be a sliced hollow sphere- like a donut)
+   Vector3 find_valid_Sphere_coords (){
+        
+            
             float z = Random.Range(-max_radius, max_radius)/2;
             float newRmin = 0;
             if (z < min_radius && z > -min_radius) newRmin = Mathf.Sqrt((min_radius*min_radius)- (z*z));
@@ -68,8 +84,10 @@ public class GenerateParticles : MonoBehaviour
             float angle = Random.Range(0, 2*Mathf.PI);
             float y = radius * Mathf.Sin(angle);
             float x = radius * Mathf.Cos(angle);
-            p.transform.localPosition = new Vector3(x,y,z);
-        }
+            return new Vector3(x,y,z);
+            
         
     }
+
+    
 }

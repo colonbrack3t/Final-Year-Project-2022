@@ -9,15 +9,12 @@ public class LiveGraphRender : MonoBehaviour
     [SerializeField] Sensor s;
     [SerializeField] LineRenderer lr;
     float time = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void Update()
     {
+        //Simple script that displays balance board readings using a line renderer - useful for debugging
         if (start)
         {
             lr.positionCount += 1;
