@@ -22,7 +22,7 @@ The Wii board gameobject contains all relevant scripts needed. These scripts are
 
 #### Balance Board Sensor class
 
-This class operates the connection to the balance board [C# client Socket tool](https://github.com/colonbrack3t/wiiboard-unity-scripts/tree/main/Wii-Balanceboard-server). We connect to the client using the UDPSocketUnity class, which inherits from the UDPSocket class (the same one that is used in the client tool). The child class overrides the Recieve function to synchronously update the Balance Board class sensor values. 
+This class operates the connection to the balance board [C# client Socket tool](https://github.com/colonbrack3t/Wiiboard-Socket-Tool). We connect to the client using the UDPSocketUnity class, which inherits from the UDPSocket class (the same one that is used in the client tool). The child class overrides the Recieve function to synchronously update the Balance Board class sensor values. 
 
 **N.B ensure the port matches the client port**
 
@@ -58,6 +58,11 @@ This operates similarly to a Game Manager,  acting as a central point that condu
 This simple enum holds every stage progession of the project, such that we can easily decide what to do in the Update() function based on the current stage.
 
 ## Troubleshooting
+### Port error on runtime
+If you get an error stating multiple servers cannot be opened on the same port, simply changing the port defined in the BalanceBoard.Start() function should resolve this problem (don't forget to also switch ports on the Wiiboard tool) 
+
+### Wii board connection issues / Wii board tool issues
+Please refer to the [Wiiboard tool docks](https://colonbrack3t.github.io/Wiiboard-Socket-Tool/)
 
 ## License+-
 [MIT](https://choosealicense.com/licenses/mit/)
