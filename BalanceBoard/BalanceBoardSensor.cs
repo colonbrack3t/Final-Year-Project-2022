@@ -26,14 +26,7 @@ public class BalanceBoardSensor : MonoBehaviour
     [SerializeField] public double avg_ms_per_reading = 0;
     [SerializeField] public double prev_ms = 0;
     
-    //ref to buttons to add onlclick handlers
-    [SerializeField] private Button Save_latency;
-    [SerializeField] private Button Record_headset_board;
-    [SerializeField] private Button Save_headset_board;
-    [SerializeField] private Button mouse_record_button;
-    [SerializeField] private Button save_mouse_board_data;
-    [SerializeField] private Button record_board_button;
-
+    
     //weight average computation attributes
     private bool calculateWeight = false;
     public double weight = 0;
@@ -59,17 +52,10 @@ public class BalanceBoardSensor : MonoBehaviour
     void Start()
     {
       //add onclick handlers for various UI
-        Save_latency.onClick.AddListener(StoreLatencyData);
-        Save_headset_board.onClick.AddListener(StoreVRvsBoardReadings);
-        Record_headset_board.onClick.AddListener(ToggleRecordHeadsetBoard);
-
-        mouse_record_button.onClick.AddListener(MouseClickRecord);
-
-        record_board_button.onClick.AddListener(ToggleRecordBoard);
-        save_mouse_board_data.onClick.AddListener(SaveMouseBoardData);
+ 
 
         //Initiate UDP Server
-        server.Server("127.0.0.1", 27334, this);
+        server.Server("127.0.0.1", 27335, this);
     }
     //record when mouse was clicked
     void MouseClickRecord(){
