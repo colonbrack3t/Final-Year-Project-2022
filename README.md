@@ -39,14 +39,14 @@ Each of these recordings produce a "data.csv" file after being toggled off. This
 This class also performs a toggleable weight estimation, by recording the sensor readings on all 4 weights. When toggled on, it begins computing the average weight, when toggled off the weight attribute holds the final average weight estimation. The user can be asked to stand still for a few seconds in order to gain an accurate average. 
 
 #### Estimate Height
-This class is mostly deprecated. Originally the user would be asked to lean back and forth in order to estimate where their pivot point is. This has been removed in favour of the user setting where their feet are using the controller. The user can press the primary button on the right to set the wiiboard object to their right controller. They can press right trigger to lock in the change.
-#### Swaying Particles
-There are different attempts at moving objects in convincing ways. Swaycube.cs + GenerateParticles.cs is the current implementation, which had the best results and has been developed past a prototype.
-##### Sway Cube & Generate Particles
-Both these classes are implemented onto GameObjects called "Tunnel". Generate Particles generates particles in either a spherical or cylindrical shape, with every feature of either  object fully customizable from the inspector menu. These are capable of generating thousands of small sphere objects which are minimally expensive to compute. Swaycube is responsible for movement of these tunnels. Swaycube uses the Wiiboard weight and sensor readings as well as the z position of the headset to set the z position of its object. Weight is used to normalise the sensor readings.
+This class is deprecated. Originally the user would be asked to lean back and forth in order to estimate where their pivot point is. This has been removed in favour of the user setting where their feet are using the controller. The user can press the primary button on the right to set the wiiboard object to their right controller. They can press right trigger to lock in the change. 
+#### Particles and Changing Sway
+There are different attempts at moving objects in convincing ways. PendulumMovement.cs + GenerateParticles.cs is the current implementation, which had the best results and has been developed past a prototype.
+##### Pendulum Movement & Generate Particles
+Generate Partilces is implemented onto GameObjects called "Tunnel". Generate Particles generates particles in either a spherical, cylindrical or cloud shape, with every feature of the object fully customizable from the inspector menu. These are capable of generating thousands of small sphere objects which are minimally expensive to compute. Pendulum Movement handles the perceived gain in sway when the user moves. It does this by taking the previous frames' head position and the current one, finding the pivot axis and change in angle, and applying a scaled amount rotation around the same axis on the parent object. This cannot be applied to the camera directly but to the parent object, as the VR headset will constantly overrwrite the rotation of the camera object. 
 
 ##### Other attempts at moving objects
-The "Accentuate" scripts aimed to exagerate the movement of the headset by over-rotating the camera. This idea was quickly scrapped due to no obvious way to incorporate the wiiboard/force plate, and the potential for nausea.
+The "Sway" scripts aimed to use wiiboard and head inputs to move the particles such that they appear to have excess gain. This has now been scraped, as it turns out the illusion is too easily deciphered by the bran due to the lack in change of angular velocity.
 
 The Moving UI scripts aimed to utilise 2D images to effectively directly manipulate pixels on the VR headset to reduce computational effort of generating 3d objects. However this actually appeared to use more computational power to make convincing smooth movement, especially as the UI camera uses an orthographic camera.
 
