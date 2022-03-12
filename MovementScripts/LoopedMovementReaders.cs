@@ -32,21 +32,7 @@ using UnityEngine;
         */
         double f1 = bbs.rwTopLeft, f2 = bbs.rwTopRight, b1 = bbs.rwBottomLeft, b2 = bbs.rwBottomRight;
         if (f1 + f2 + b1 + b2 < 20) return 0;
-        
-        /*
-        f1 /= bbs.weight;
-        f2 /= bbs.weight;
-        b1 /= bbs.weight;
-        b2 /= bbs.weight;
-        */
-      /*  double topright_backright = f1 / (f1 + b1);
-        double topleft_backleft = f2 / (f2 + b2);
-        double topright_topleft = f1 / (f1 + f2);
-        double backright_backleft = b1 / (b1 + b2);
-
-        double centre_x = (topright_backright + topleft_backleft)/2;
-        double centre_y = (topright_topleft + backright_backleft)/2;
-    */
+  
            double right_ratio = f1 / (f1 + b1);
         double left_ratio = f2 / (f2 + b2);
 

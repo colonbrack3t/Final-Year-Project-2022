@@ -15,7 +15,7 @@ private Vector3 start_pos, end_pos;
     {
         start_pos = new Vector3(0, 0, start);
         end_pos = new Vector3(0, 0, end);
-        if (targets == null)
+        if (targets == null|| targets.Length == 0)
             targets = new Transform[]{this.transform};
     }
 
