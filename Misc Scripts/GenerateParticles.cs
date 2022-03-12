@@ -7,9 +7,10 @@ public class GenerateParticles : MonoBehaviour
     [SerializeField] GameObject particle;
     [SerializeField] GameObject Tunnel;
     [SerializeField] int num_of_particles;
+        public Transform camera;
     [SerializeField] int min_radius, max_radius, tunnel_min_length, tunnel_max_length;
     [SerializeField] Shape shape = Shape.Tunnel;
-    enum Shape{Tunnel, Sphere, Cloud}
+    enum Shape{Tunnel, Sphere, Cloud, Grid}
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +24,16 @@ public class GenerateParticles : MonoBehaviour
             case Shape.Cloud:
              makeCloud();
              break;
+            
         }
     }
+ 
     void makeCloud(){
         for(int i = 0; i < num_of_particles; i++){
             GameObject p = Instantiate(particle, Tunnel.transform);
              
             p.transform.localPosition = find_valid_coords(min_radius, max_radius);
+            p.GetComponent<hideball>().camera= camera;
         }
     }
     Vector3 find_valid_coords (float min, float max){
