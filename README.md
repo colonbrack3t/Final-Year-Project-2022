@@ -58,3 +58,6 @@ This operates similarly to a Game Manager,  acting as a central point that condu
 This simple enum holds every stage progession of the project, such that we can easily decide what to do in the Update() function based on the current stage.
 
 ## Troubleshooting
+
+## License+-
+[MIT](https://choosealicense.com/licenses/mit/)
