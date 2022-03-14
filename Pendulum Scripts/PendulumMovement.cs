@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using System;
+using System.Text.RegularExpressions;
+using System.IO;
+using UnityEngine;
 public class PendulumMovement : MonoBehaviour
 {
 
@@ -14,7 +18,7 @@ public class PendulumMovement : MonoBehaviour
 
 
     //sensitivity - 1 = 100% extra rotation (ie doubling percieved motion)
-    [SerializeField] float sensitivity = 1;
+    [SerializeField] public float sensitivity = 1;
     
     // Start is called before the first frame update
     void Start()
@@ -34,7 +38,7 @@ public class PendulumMovement : MonoBehaviour
         float rotation = Vector3.SignedAngle(prev_v, head_v, axis);
         //rotate object around axis, relative to head rotation and sensitivity
         transform.RotateAround(transform.position, axis, rotation * sensitivity);
-        //assign previous head position
+        //assign previous head position to the new rotated head position
         prev_cam_pos = camera.position;
     }
 }
