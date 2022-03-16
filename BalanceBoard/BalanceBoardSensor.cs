@@ -42,19 +42,8 @@ public class BalanceBoardSensor : MonoBehaviour
         //Initiate UDP Server
         server.Server("127.0.0.1", 27335, this);
     }
-    //record when mouse was clicked
-    
-    void FixedUpdate()
-    {
-      //if record_headset flag is true, record vertical height of headset
-      if(record_headset)
-             RecordHeadsetVertical();
-        if (calculateWeight){
-            num_weight_readings++;
-            double weight_reading = rwTopRight + rwTopLeft + rwBottomRight + rwBottomLeft;
-            weight = (weight + weight_reading)/num_weight_readings;
-        }
-    }
+    //public wrapper for debug - used in UDP server
+    public void display(string s){Debug.Log(s);}
     
     //public wrapper to add method of latency list
     public void AddLatency(double latency)
