@@ -10,7 +10,7 @@ public class GenerateParticles : MonoBehaviour
     [SerializeField] GameObject Tunnel;
     [SerializeField] int num_of_particles;
     public Transform camera;
-    [SerializeField] int min_radius, max_radius, tunnel_min_length, tunnel_max_length;
+    [SerializeField] float min_radius, max_radius, tunnel_min_length, tunnel_max_length;
     [SerializeField] Shape shape = Shape.Tunnel;
     //enum for different formable shapes
     enum Shape{Tunnel, Sphere, Cloud, Grid}
@@ -54,13 +54,15 @@ public class GenerateParticles : MonoBehaviour
     }
     //simple random particles, outside of min and within max radius
     Vector3 find_valid_Cloud_coords (){
+        Vector3 xyz;
         float x = 0, y = 0, z = 0;
         do {
             x = Random.Range(-max_radius, max_radius);
             y = Random.Range(-max_radius, max_radius);
             z = Random.Range(-max_radius, max_radius);
-        }while(Mathf.Abs(x) < min_radius && Mathf.Abs(y) < min_radius && Mathf.Abs(z) < min_radius);
-        return new Vector3(x , y ,z);
+            xyz = new Vector3(x , y ,z);
+        }while(xyz.magnitude < min_radius );
+        return xyz;
     }
     // spawns particles in a hollow cylinder 
     Vector3 find_valid_Tunnel_coords (){
