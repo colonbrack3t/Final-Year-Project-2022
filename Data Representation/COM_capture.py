@@ -98,5 +98,5 @@ def plot_multiple_files_with_func(fs, plot_func):
         plot_func(header, tl, tr, bl, br, headx, headz, t, header[1], colors[i])
     plt.legend()
     plt.show()
-plot_multiple_files_with_func(files_data, plot_head_xz)
-plot_multiple_files_with_func(files_data, gen_sensor_plot)
+plot_multiple_files_with_func(files_data, plot_centre_of_mass)
+plot_multiple_files_with_func(files_data, centre_of_pressure)
