@@ -5,7 +5,7 @@
     using System.Net.Sockets;
     using System.Text;
 
-//standard UDP Socket
+    //standard UDP Socket taken from https://gist.github.com/louis-e/888d5031190408775ad130dde353e0fd#file-udpsocket-cs
     public class UDPSocket
     {
         protected Socket _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);

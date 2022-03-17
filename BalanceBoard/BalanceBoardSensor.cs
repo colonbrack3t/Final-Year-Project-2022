@@ -9,10 +9,10 @@ public class BalanceBoardSensor : MonoBehaviour
 {
 
     // sensor weights
-    [SerializeField] public double rwTopLeft = 0f;
-    [SerializeField] public double rwTopRight = 0f;
-    [SerializeField] public double rwBottomLeft = 0f;
-    [SerializeField] public double rwBottomRight = 0f;
+    public double rwTopLeft = 0f;
+    public double rwTopRight = 0f;
+    public double rwBottomLeft = 0f;
+    public double rwBottomRight = 0f;
 
     //latency- only updated if client is in latency mode
     [SerializeField] public double latency = 0f;
@@ -36,11 +36,8 @@ public class BalanceBoardSensor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      //add onclick handlers for various UI
- 
-
         //Initiate UDP Server
-        server.Server("127.0.0.1", 27335, this);
+        server.Server("127.0.0.1", 27337, this);
     }
     //public wrapper for debug - used in UDP server
     public void display(string s){Debug.Log(s);}
