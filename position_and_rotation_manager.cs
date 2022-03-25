@@ -2,30 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class position_and_rotation_manager : MonoBehaviour
+public class position_and_rotation_manager : SwayBaseClass
 {
     [SerializeField] Transform real_world_input;
     
-    [SerializeField] float gain;
-    Quaternion prev_rot, vr_rot;
-    [SerializeField] Vector3 prev_pos;
+    Quaternion prev_rot;
+    Vector3 prev_pos;
     public bool gaining = false;
  
-    void start_pendulum(){
-        gaining = true;
-        prev_pos = real_world_input.position;
-        prev_rot = real_world_input.rotation;
-    }
-    void set_origin(){
-        
-    }
+
     // Update is called once per frame
     void Update()
     {
-    
-        if (gaining){
-            Gain();
-        }
+        Gain();
         prev_pos = real_world_input.position;
         prev_rot = real_world_input.localRotation;
         
@@ -38,7 +27,7 @@ public class position_and_rotation_manager : MonoBehaviour
         //get axis angle representation
         change_in_direction.ToAngleAxis(out var change_angle, out var change_axis);
         // apply gain and update rotation 
-        transform.rotation *= Quaternion.AngleAxis(change_angle * (1 + gain), change_axis);
+        transform.rotation *= Quaternion.AngleAxis(change_angle * (1 + sensitivity), change_axis);
 
 
         //get absolute change in position 
@@ -47,7 +36,7 @@ public class position_and_rotation_manager : MonoBehaviour
         // ie if camera move in the direction it was facing, this would be (0,0,1)
         var unrotated_displacement = Quaternion.Inverse(real_world_input.localRotation) * displacement; 
         //apply simulated camera rotation and gain
-        transform.position += (transform.rotation * unrotated_displacement)*(1 + gain);
+        transform.position += (transform.rotation * unrotated_displacement)*(1 + sensitivity);
             
 
     }
