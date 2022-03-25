@@ -51,7 +51,7 @@ public class GenerateParticles : MonoBehaviour
          int p_side = (int) (p_row * p_row);
          
          for(int i = 0; i < num_of_particles; i++){
-            GameObject p = Instantiate(particle, Tunnel.transform);
+            
             //decide x y z ranges 
             int zorigin = (int) (i / p_side);
             int zmod = (int) (i % p_side);
@@ -72,6 +72,9 @@ public class GenerateParticles : MonoBehaviour
             x = Random.Range(x , x + range);
             y = Random.Range(y , y + range);
             z = Random.Range(z , z + range);
+            if(Mathf.Abs(x) < min_radius &&Mathf.Abs(y) < min_radius &&Mathf.Abs(z) < min_radius)
+                continue;
+            GameObject p = Instantiate(particle, Tunnel.transform);
             Vector3 xyz = new Vector3(x , y ,z);
             
             p.transform.localPosition = xyz;

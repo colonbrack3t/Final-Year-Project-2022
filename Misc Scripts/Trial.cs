@@ -18,7 +18,7 @@ public class Trial : MonoBehaviour
     [SerializeField] BalanceBoardSensor bbs;
 
     //pendulum script to set sensitivity
-    [SerializeField] PendulumMovement pendulum;
+    [SerializeField] SwayBaseClass pendulum;
 
     //duration of each phase
     [SerializeField] float control_duration, test_duration, aftermath_duration, pause_duration;
