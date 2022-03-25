@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamicPendulum : MonoBehaviour
+public class DynamicPendulum : SwayBaseClass
 {   // headset camera
     [SerializeField] Transform camera;
     [SerializeField] Transform pivot_ball;
@@ -10,7 +10,6 @@ public class DynamicPendulum : MonoBehaviour
     Vector3[] prev_cam_pos = new Vector3[3];
     
     [SerializeField] bool start = false;
-
 
     //sensitivity - 1 = 100% extra rotation (ie doubling percieved motion)
     [SerializeField] public float sensitivity = 1;

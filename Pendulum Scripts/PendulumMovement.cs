@@ -6,7 +6,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.IO;
 using UnityEngine;
-public class PendulumMovement : MonoBehaviour
+public class PendulumMovement : SwayBaseClass
 {
 
     // headset camera
@@ -18,7 +18,7 @@ public class PendulumMovement : MonoBehaviour
 
 
     //sensitivity - 1 = 100% extra rotation (ie doubling percieved motion)
-    [SerializeField] public float sensitivity = 1;
+    // /[SerializeField] public float sensitivity = 1;
     
     // Start is called before the first frame update
     void Start()
