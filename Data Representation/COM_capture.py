@@ -12,15 +12,22 @@ import matplotlib.transforms as transforms
 def get_data(d):
         return list(map(float, d.split(",")[1:]))
 
+#Centres values on average
+def centre_on_average(l):
+    avg = np.average(l)
+    return list(map (lambda x : x - avg, l))
+
 # plots head x and head z change over time
 def plot_head_xz(header, tl, tr, bl, br, headx, headz, t, ax,  label):
     plot_sensitivity_change(header, label)
+    headx=centre_on_average(headx)
+    headz=centre_on_average(headz)
     plt.plot(t , headx, label=f"Head left/right {label}")
     plt.plot(t , headz, label=f"Head back/forth {label}")
 
 #plots centre of mass (head x and z)
 def centre_of_mass(header, tl, tr, bl, br, headx, headz, t, ax,  label):
-    plt.scatter(headx, headz, label = f"Trial {label}")
+    plt.scatter(headx, headz, label = label)
 
 
 # plots vertical line when sensitivity was changed / stage change
@@ -39,13 +46,13 @@ def plot_sensitivity_change(header, label):
     plt.axvline(control_time, label = f"Apply sway {label}", c = "red")
     plt.axvline(control_time + test_time, label = f"End sway {label}", c= "red") 
 # parse data 
-# data example: [0] Date: 16/03/2022 13:43:42 ,  Trial #: 1/6 ,     Sensitivty: 1 ,     Control time: 30 ,  Test time: 30 ,     Aftermath time: 15 ,    Pause time : 120 
-#               [1] Top Left ,                  -0.6326048 ,        -0.6326048 ,        -0.6627289 ,        -0.6326048 ,        -0.6024808 ,            -0.6426462 , ...
-#               [2] Top Right ,                 1.055239 ,          1.055239 ,          0.9584283 ,         0.9681093 ,         0.9584283 ,             0.9777904 , ...
-#               [3] Bottom Left ,               -0.7425287 ,        -0.7425287 ,        -0.7816092 ,        -0.8011494 ,        -0.7522988 ,            -0.7816092 , ...
-#               [4] Bottom Right ,              -0.566987 ,         -0.566987 ,         -0.6342567 ,        -0.5958169 ,        -0.5862069 ,            -0.6342567 , ...
-#               [5] Head ,                      (0.1; 1.2; -0.5) ,  (0.1; 1.2; -0.5) ,  (0.1; 1.2; -0.5) ,  (0.1; 1.2; -0.5) ,  (0.1; 1.2; -0.5) ,      (0.1; 1.2; -0.5) , ...
-#               [6] Time ,                      0.02 ,              0.04 ,              0.06 ,              0.08 ,              0.09999999 ,            0.12 , ...                
+# data example: [0] | Date: 16/03/2022 13:43:42 ,  Trial #: 1/6 ,     Sensitivty: 1 ,     Control time: 30 ,  Test time: 30 ,     Aftermath time: 15 ,    Pause time : 120 
+#               [1] | Top Left ,                  -0.6326048 ,        -0.6326048 ,        -0.6627289 ,        -0.6326048 ,        -0.6024808 ,            -0.6426462 , ...
+#               [2] | Top Right ,                 1.055239 ,          1.055239 ,          0.9584283 ,         0.9681093 ,         0.9584283 ,             0.9777904 , ...
+#               [3] | Bottom Left ,               -0.7425287 ,        -0.7425287 ,        -0.7816092 ,        -0.8011494 ,        -0.7522988 ,            -0.7816092 , ...
+#               [4] | Bottom Right ,              -0.566987 ,         -0.566987 ,         -0.6342567 ,        -0.5958169 ,        -0.5862069 ,            -0.6342567 , ...
+#               [5] | Head ,                      (0.1; 1.2; -0.5) ,  (0.1; 1.2; -0.5) ,  (0.1; 1.2; -0.5) ,  (0.1; 1.2; -0.5) ,  (0.1; 1.2; -0.5) ,      (0.1; 1.2; -0.5) , ...
+#               [6] | Time ,                      0.02 ,              0.04 ,              0.06 ,              0.08 ,              0.09999999 ,            0.12 , ...                
 #              
 def split_data(data):
     header = data[0].split(",")
@@ -64,10 +71,10 @@ def split_data(data):
 def gen_sensor_plot(header, tl, tr, bl, br, headx, headz, t, ax, label):
     plot_sensitivity_change(header, label)
    
-    plt.plot(t, tl, label = f"Front left - Trial {label}")
-    plt.plot(t, tr, label = f"Front right - Trial {label}")
-    plt.plot(t, bl, label = f"Bottom left - Trial {label}")
-    plt.plot(t, br, label = f"Bottom right - Trial {label}")
+    plt.plot(t, tl, label = f"Front left {label}")
+    plt.plot(t, tr, label = f"Front right {label}")
+    plt.plot(t, bl, label = f"Bottom left {label}")
+    plt.plot(t, br, label = f"Bottom right {label}")
 
 # calculates ratio of sensor readings to calculate centre of pressure for x and y
 def get_centre_of_pressure(tl,tr,bl,br):
@@ -155,7 +162,7 @@ files_data = []
 
     
 for i in indices:
-    f = enum_files[i][1]
+    f = path + enum_files[i][1]
     data_set = open(f , 'r').read().split('\n')
     files_data.append(split_data(data_set))
 
@@ -164,7 +171,7 @@ def plot_multiple_files_with_func(fs, plot_func, title):
     
     for i in range(len(fs)):
         header, tl, tr, bl, br, headx, headz, t = files_data[i]
-        plot_func(header, tl, tr, bl, br, headx, headz, t, ax, header[1])
+        plot_func(header, tl, tr, bl, br, headx, headz, t, ax, header[1] + " " + header[2])
     ax.set_title(title + "\n" + header[0])
     plt.legend()
     plt.show()
@@ -173,7 +180,8 @@ plot_multiple_files_with_func(files_data, centre_of_mass_PCA,  "Principle Compon
 plot_multiple_files_with_func(files_data, centre_of_pressure, "Data for centre of pressure using Wiiboard sensors")
 plot_multiple_files_with_func(files_data, centre_of_pressure_PCA, "Principle Component analysis on centre of pressure using Wiiboard sensors")
 
+
+plot_multiple_files_with_func(files_data, plot_head_xz, "Head x and z positions over time")
 if len(files_data) == 1: 
-    plot_multiple_files_with_func(files_data, plot_head_xz, "Head x and z positions over time")
     plot_multiple_files_with_func(files_data, gen_sensor_plot, "Sensor readings over time")
 
