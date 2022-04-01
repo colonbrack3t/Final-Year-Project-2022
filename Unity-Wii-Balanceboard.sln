@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wii-Balanceboard-server", "Wii-Balanceboard-server\Wii-Balanceboard-server.csproj", "{5C8E893F-C971-4B83-B32B-6CBF24CD37E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UDPSocket", "UDPSocket", "{FCF9D884-3F28-4570-855D-35CFAA13A0CE}"
+ProjectSection(SolutionItems) = preProject
+	UDPSocket.cs = UDPSocket.cs
+	Unity Scripts\UnityWiiServer.cs = Unity Scripts\UnityWiiServer.cs
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unity Scripts", "Unity Scripts", "{16D96B1D-A42F-4773-98DA-4C8CA0833262}"
+ProjectSection(SolutionItems) = preProject
+	UDPSocket.cs = UDPSocket.cs
+	Unity Scripts\UnityWiiServer.cs = Unity Scripts\UnityWiiServer.cs
+	Unity Scripts\UDPSocketUnity.cs = Unity Scripts\UDPSocketUnity.cs
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C8E893F-C971-4B83-B32B-6CBF24CD37E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C8E893F-C971-4B83-B32B-6CBF24CD37E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C8E893F-C971-4B83-B32B-6CBF24CD37E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C8E893F-C971-4B83-B32B-6CBF24CD37E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
