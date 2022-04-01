@@ -1,5 +1,8 @@
 # Final-Year-Project-2022
 Overall repository for various sections of my Project
+
+To access the sections of my project, simply switch between the branches. The releases section also has any available binaries.
+
 # How to install this project, THE COMPLETE GUIDE
 ## Prerequisites
 You will need a computer, a VR headset (that is compatible with Steam - most are) and a Nintendo Wii Fit Balance Board. 
