@@ -12,7 +12,7 @@ public class Trial : MonoBehaviour
     [SerializeField] Text text;
 
     //head location
-    [SerializeField] Transform Head;
+    [SerializeField] Transform Head, rig;
 
     //balance board
     [SerializeField] BalanceBoardSensor bbs;
@@ -21,8 +21,8 @@ public class Trial : MonoBehaviour
     [SerializeField] SwayBaseClass pendulum;
 
     //duration of each phase
-    [SerializeField] float control_duration, test_duration, aftermath_duration, pause_duration;
-
+    [SerializeField] public float control_duration, test_duration, aftermath_duration, pause_duration;
+    [SerializeField] Text control_display_time, test_display_time, aftermath_display_time, pause_display_time;
     //list of sensitivites for each trial
     [SerializeField] List<float> test_sensitivity = new List<float>();
 
@@ -63,13 +63,31 @@ public class Trial : MonoBehaviour
         head_positions = new List<Vector3>();
         t_time = new List<float>();
     }
+
+    public void Recentre(){
+        rig.position = new Vector3(0,0,0);
+    } 
+    public void Reset_Test(){
+        Reset_storage();
+        recording = false; 
+        trial_running = false;
+        curr_test = -1;
+        test_num = test_sensitivity.Count;
+        text.text = "";
+        t = 0;
+    }
     //intiate variables for new trial
     public void BeginTrial()
     {
-        recording = true;
+        
         stage = Trial_Stages.Control_Stage;
         pendulum.sensitivity = 0;
         curr_test++;
+        
+        if(test_sensitivity.Count <= curr_test)
+            {Reset_Test();
+            return;}
+        recording = true;
         trial_running = true;
         text.text = "";
         t = 0;
@@ -194,6 +212,64 @@ public class Trial : MonoBehaviour
 
     async void display_time(float time_diff)
     {
-        text.text = Math.Floor(time_diff - t) + " seconds left \n Current stage : " + stage;
+        text.text = "Trail #: " + curr_test + "\n" + Math.Floor(time_diff - t) + " seconds left \n Current stage : " + stage;
+    }  
+    public void change_control_time(float slider_val){
+        change_time(Trial_Stages.Control_Stage, slider_val);
+    }
+    public void change_test_time(float slider_val){
+        change_time(Trial_Stages.Test_Stage, slider_val);
+    }
+    public void change_aftermath_time(float slider_val){
+        change_time(Trial_Stages.Aftermath_Stage, slider_val);
+    }
+    public void change_pause_time(float slider_val){
+        change_time(Trial_Stages.Pause_Stage, slider_val);
+
+    }
+    
+
+    
+    private void change_time(Trial_Stages stage, float slider_val){
+            switch(stage){
+                case Trial_Stages.Control_Stage:
+                    control_duration = slider_val;
+                    control_display_time.text = "Control : " + slider_val;
+                    break;
+                case Trial_Stages.Test_Stage:
+                    test_duration = slider_val;
+                    test_display_time.text = "Test : " + slider_val;
+                    break;
+                case Trial_Stages.Aftermath_Stage:
+                    aftermath_duration = slider_val;
+                    aftermath_display_time.text = "Aftermath : " + slider_val;
+                    break;
+                case Trial_Stages.Pause_Stage:
+                    pause_duration = slider_val;
+                    pause_display_time.text = "Pause : " + slider_val;
+                    break;
+                default :
+                    return;
+            }
+    }
+    public Button sensitivity_btn_copy;
+    public Transform sensitivity_btns_container;
+    public List<Button> sensitivity_btns;
+  
+    public Text user_input;
+    public void AddSensitivity(){
+        if (float.TryParse(user_input.text, out float sensitivity)){
+            var btn = Instantiate(sensitivity_btn_copy, sensitivity_btns_container).GetComponent<Button>();
+            btn.onClick.AddListener(delegate{DeleteSensitivity(btn);});
+            sensitivity_btns.Add(btn);
+            test_sensitivity.Add(sensitivity);
+            btn.GetComponentInChildren<Text>().text = user_input.text;
+        }
+    }
+    public void DeleteSensitivity(Button btn){
+        int index = sensitivity_btns.FindIndex(a=> a == btn);
+        test_sensitivity.RemoveAt(index);
+        sensitivity_btns.RemoveAt(index);
+        Destroy(btn.gameObject);
     }
 }
