@@ -37,7 +37,7 @@ public class BalanceBoardSensor : MonoBehaviour
     void Start()
     {
         //Initiate UDP Server
-        server.Server("127.0.0.1", 27337, this);
+        server.Server("127.0.0.1", 27338, this);
     }
     //public wrapper for debug - used in UDP server
     public void display(string s){Debug.Log(s);}
