@@ -69,7 +69,7 @@ Carry on with this guide if you would like to build this project as a Unity proj
 
 ## Software requirements
 
-You will also need Unity installed to run the VR portion of this project, and will need Python installed to run the data analysis and graphing portion of this project.
+You will need Unity installed to run the VR portion of this project, and will need Python installed to run the data analysis and graphing portion of this project.
 
 ### Unity 
 You will need to install this from the [Unity website](https://unity.com/download). You wil also need to create a Unity account. 
@@ -83,6 +83,8 @@ pip install numpy matplotlib
 Assuming you have installed all relevant software, you should now have everything you need to build this project. Create a new Unity 3D project and unzip the sourcecode from this [git repository](https://github.com/colonbrack3t/Final-Year-Project-2022/tree/Unity-Components) on the Unity-Components branch in, or clone this repository, into the Assets folder. You will then have to open the package manager window (windows > Package manager) and install the XR Interaction Toolkit. You will also need to go into File>Project Settings>XR plug-in management and enable OpenVR. Refer to [this video](https://www.youtube.com/watch?v=yxMzAw2Sg5w) for more help.   
 
 More help for this section is also provided in the [documentation for this code](https://github.com/colonbrack3t/Final-Year-Project-2022/tree/Unity-Components#readme)
+## Connecting the WiiBoard
+Follow the readme documentation found on [the Wii Board script github page](https://github.com/colonbrack3t/Final-Year-Project-2022/tree/Wii-Board-Socket#readme) to connect the Wii Board. NOTE THE UNITY PROJECT IS RUNNING ON PORT 27338! This can be changed in the Wiibalanceboard class.
 
 # Troubleshooting
 If you have any problems or questions that are not addressed or solved by something mentioned in this documentation, do not hesitate to contact me at ludoattuoni@gmail.com
