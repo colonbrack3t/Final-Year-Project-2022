@@ -67,7 +67,7 @@ If the wiiboard is failing to connect to the device, ensure that
 3) Ensure you are using the Control Panel method, not by connecting via Settings
  
 ## Wiiboard connecting to PC but not tool (tool says it cannot find any Wii boards)
-Turn the Wiiboard off, unpair the Wiiboard from the device, then re-attempt to connect the Wiiboard.
+Turn the Wiiboard off, unpair the Wiiboard from the device, then re-attempt to connect the Wiiboard. If the problem persists, try unplugging then replugging bluetooth adapter.
 ## Wiiboard sensor values are frozen
 This is usually indication that the Wiiboard needs to change batteries.
 # Implementation Justification
