@@ -1,5 +1,24 @@
 # FYP Unity Components
 All components of Unity needed to both connect a device to a wiiboard, and to create and run the FYP simulation.
+
+- [FYP Unity Components](#fyp-unity-components)
+- [Tutorial on how it works](#tutorial-on-how-it-works)
+- [Installation](#installation)
+  * [Full build](#full-build)
+  * [Build from Source](#build-from-source)
+- [Usage](#usage)
+  * [Running the project on VR](#running-the-project-on-vr)
+- [Using and understanding the source code](#using-and-understanding-the-source-code)
+  * [Wii Board](#wii-board)
+    + [Balance Board Sensor class](#balance-board-sensor-class)
+    + [Particles and Changing Sway](#particles-and-changing-sway)
+      - [Generate Particles](#generate-particles)
+      - [position_and_rotation_manager](#position-and-rotation-manager)
+- [Troubleshooting](#troubleshooting)
+  * [Port error on runtime](#port-error-on-runtime)
+  * [Wii board connection issues / Wii board tool issues](#wii-board-connection-issues---wii-board-tool-issues)
+- [License+-](#license--)
+
 # Tutorial on how it works
 This project is used to measure the effect of visual sway on balance. When the program is run, a user will be in the middle of an immersive field of particles. The user is free to move and turn their head, and they will experience usual 1:1 actions in the VR world - as is normal in VR. When Begin Trial is pressed, for a number of seconds (defined by the "Control Stage" time parameter), nothing will happen and the VR user will see no change in how their actions are reflected in VR world. Then, for a number of seconds equal to the "Test Stage" parameter, the user will exprience a 1 : (1 + sensitivity parameter) visual sway. That is, if the paramter = 1, then the user experiences 1 : 2 sway. So in that case, when the user turns 90 degrees they see the world spin 180 degrees instead. If they move 10cm it looks like they moved 20cm. Then once this period has passed, the user is restored to 1 : 1 for the duration of the Aftermath stage. Once the aftermath stage is finished, a csv file will be created with all the recorded data and a final "Pause stage" timer will count down, where the user is expected to take off their headset in preparation for the next trial. If Begin Trial is pressed again, the trial will begin again, this time taking the next sensitivity from the list. 
 
