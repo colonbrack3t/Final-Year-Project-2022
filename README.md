@@ -5,6 +5,9 @@ created by Ludo Attuoni
 
 Overall repository for various sections of my Project
 
+To read the report for this thesis, see the `Report.pdf`.
+
+
 To access the sections of my project, simply switch between the branches. The releases section also has any available binaries.
 
 - [Final-Year-Project-2022](#final-year-project-2022)
